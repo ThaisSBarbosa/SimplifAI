@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SimplifAI.Views.UserPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SimplifAI">
+    <ContentPage.Resources>
+        <ResourceDictionary />
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <ContentView Padding="0,20,0,10" VerticalOptions="FillAndExpand">
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="0"
+                            BorderColor="White"
+                            CornerRadius="170"
+                            HeightRequest="170"
+                            WidthRequest="170">
+                            <Image Aspect="AspectFill" Source="user.png" />
+                        </Frame>
+
+
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <StackLayout
+                    Padding="10,10,10,10"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <Label
+                        FontSize="Title"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource LabelDestaque}"
+                        Text="Olá, Fulano!" />
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Row="2">
+                <StackLayout
+                    Padding="20,10,20,10"
+                    Orientation="Horizontal"
+                    Spacing="10"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Style="{StaticResource LabelBold}"
+                        Text="Nome: "
+                        VerticalOptions="CenterAndExpand" />
+                    <Entry
+                        x:Name="TxtUserName"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Text"
+                        Placeholder="Digite seu nome"
+                        Text="Fulano" />
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Row="3">
+                <StackLayout
+                    Padding="20,10,20,10"
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <Label
+                        Style="{StaticResource LabelBold}"
+                        Text="Sobrenome: "
+                        VerticalOptions="CenterAndExpand" />
+                    <Entry
+                        x:Name="TxtUserLastName"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Text"
+                        Placeholder="Digite seu nome"
+                        Text="De Tal" />
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Row="4">
+                <StackLayout
+                    Padding="20,10,20,10"
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <Label
+                        Style="{StaticResource LabelBold}"
+                        Text="Nascimento: "
+                        VerticalOptions="CenterAndExpand" />
+                    <DatePicker x:Name="DtPcUserBirthDate" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+        <StackLayout
+            Padding="20,24,20,24"
+            Spacing="10"
+            VerticalOptions="EndAndExpand">
+            <Button
+                x:Name="BtnSalvar"
+                Clicked="BtnSalvar_Clicked"
+                HeightRequest="50"
+                Text="Salvar" />
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
