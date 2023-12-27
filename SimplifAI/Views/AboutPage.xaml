@@ -14,11 +14,8 @@
         <ResourceDictionary />
     </ContentPage.Resources>
     <StackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+
+        <VerticalStackLayout>
             <StackLayout
                 BackgroundColor="#F6F3ED"
                 HorizontalOptions="Fill"
@@ -30,78 +27,78 @@
                     <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
                         <Image
                             HeightRequest="100"
-                            Source="SmartVeredict.png"
+                            Source="smart_veredict.png"
                             VerticalOptions="Center" />
                     </ContentView>
                 </StackLayout>
             </StackLayout>
-            <ScrollView Grid.Row="1">
-                <StackLayout
-                    Padding="30,10,0,10"
+
+            <StackLayout
+                    Padding="30,10,0,30"
                     Orientation="Vertical"
                     Spacing="10">
-                    <Label
+                <Label
                         FontSize="Title"
                         Style="{StaticResource LabelDestaque}"
                         Text="SMART VEREDICT" />
-                    <Label
+                <Label
                         Padding="0,0,0,0"
                         FontSize="16"
                         Text="Algum texto interessante que explique o que a gente faz." />
-                    <Label
+                <Label
                         Padding="0,0,0,0"
                         FontSize="16"
                         Text="Blah, Blah, Blah, Blah, Blah, Blah" />
-                </StackLayout>
-            </ScrollView>
-            <ScrollView Grid.Row="2">
-                <StackLayout
-                    Padding="30,10,0,10"
+            </StackLayout>
+
+            <StackLayout
+                    Padding="30,10,0,30"
                     Orientation="Vertical"
                     Spacing="10">
-                    <Label
+                <Label
                         FontSize="Title"
                         Style="{StaticResource LabelDestaque}"
                         Text="O OBJETIVO" />
-                    <Label
+                <Label
                         Padding="0,0,0,0"
                         FontSize="16"
                         Text="Fazer a gente ficar doida" />
-                </StackLayout>
-            </ScrollView>
-            <ScrollView Grid.Row="3">
-                <StackLayout
-                    Padding="30,10,0,10"
+            </StackLayout>
+
+            <StackLayout
+                    Padding="30,10,0,30"
                     Orientation="Vertical"
                     Spacing="10">
-                    <Label
+                <Label
                         FontSize="Title"
                         Style="{StaticResource LabelDestaque}"
                         Text="O TIME" />
-                    <Label
+                <Label
                         Padding="0,0,0,0"
                         FontSize="16"
                         Text="Três malucas." />
-                </StackLayout>
-            </ScrollView>
-        </Grid>
+            </StackLayout>
+
+
+        </VerticalStackLayout>
+
+
         <Label
-            Padding="0,10,0,10"
-            FontSize="16"
-            HorizontalTextAlignment="Center"
-            VerticalOptions="EndAndExpand">
+    Padding="0,10,0,10"
+    FontSize="16"
+    HorizontalTextAlignment="Center"
+    VerticalOptions="EndAndExpand">
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
-                        <Span FontSize="10" Text="Designed by: " />
-                        <Span
-                            FontSize="12"
-                            Style="{StaticResource LabelBold}"
-                            Text="Marias ♥ " />
-                        <Span FontSize="10" Text="(2023)" />
+                        <Span Style="{StaticResource ColorTextNormal}" FontSize="10" Text="Designed by: " />
+                        <Span Style="{StaticResource LabelBold}" FontSize="12" Text="Marias ♥ " />
+                        <Span Style="{StaticResource ColorTextNormal}" FontSize="10" Text=" (2023)" />
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        
+
     </StackLayout>
 </ContentPage>

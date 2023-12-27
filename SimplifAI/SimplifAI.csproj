@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net8.0-ios;net8.0-maccatalyst;net8.0-android</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
@@ -24,7 +24,7 @@
 		<ApplicationTitle>SimplifAI</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.simplifai</ApplicationId>
+		<ApplicationId>com.smartveredict.simplifai</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -41,9 +41,10 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#C3AA9E" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -57,11 +58,157 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
+	  <None Remove="Resources\drawable\camera.png" />
+	  <None Remove="Resources\drawable\icon_about.png" />
+	  <None Remove="Resources\drawable\icon_feed.png" />
+	  <None Remove="Resources\drawable\scan.png" />
+	  <None Remove="Resources\drawable\smart_veredict.png" />
+	  <None Remove="Resources\drawable\smart_veredict_logo.png" />
+	  <None Remove="Resources\drawable\user.png" />
+	  <None Remove="Resources\drawable\usuario.png" />
+	  <None Remove="Resources\drawable\xamarin_logo.png" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Italic-VariableFont_wght.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-VariableFont_wght.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Black.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-BlackItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-BoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ExtraBold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ExtraBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ExtraLightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Light.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-LightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-MediumItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\values\colors.xml" />
+	  <None Remove="Resources\values\styles.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Include="Resources\drawable\camera.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\icon_about.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\icon_feed.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\scan.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\smart_veredict.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\user.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\usuario.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\drawable\xamarin_logo.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AndroidResource>
+	  <AndroidResource Include="Resources\values\colors.xml" />
+	  <AndroidResource Include="Resources\values\styles.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Italic-VariableFont_wght.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-VariableFont_wght.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Black.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-BlackItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Bold.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-BoldItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-ExtraBold.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-ExtraBoldItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-ExtraLight.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-ExtraLightItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Italic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Light.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-LightItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Medium.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-MediumItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Regular.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-SemiBold.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Include="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\drawable\smart_veredict_logo.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiIcon>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Update="Resources\Fonts\OpenSans-Regular.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Update="Resources\Fonts\OpenSans-Semibold.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Update="Resources\Fonts\WatermelonSugar.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
 	</ItemGroup>
 
 </Project>

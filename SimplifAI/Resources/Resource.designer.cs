@@ -228,7 +228,7 @@ namespace SimplifAI.Droid
 			global::Plugin.Media.Resource.Styleable.GradientColor_android_tileMode = global::SimplifAI.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::Plugin.Media.Resource.Styleable.GradientColor_android_type = global::SimplifAI.Droid.Resource.Styleable.GradientColor_android_type;
 			global::Plugin.Media.Resource.Xml.image_share_filepaths = global::SimplifAI.Droid.Resource.Xml.image_share_filepaths;
-			global::Plugin.Media.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::SimplifAI.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
+			//global::Plugin.Media.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::SimplifAI.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::SimplifAI.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::SimplifAI.Droid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::SimplifAI.Droid.Resource.Attribute.fontProviderAuthority;

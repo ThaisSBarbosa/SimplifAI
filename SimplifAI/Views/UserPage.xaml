@@ -8,11 +8,8 @@
         <ResourceDictionary />
     </ContentPage.Resources>
     <StackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+
+        <VerticalStackLayout>
             <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
                 <StackLayout
                     HorizontalOptions="Center"
@@ -34,66 +31,66 @@
                     </ContentView>
                 </StackLayout>
             </StackLayout>
-            <ScrollView Grid.Row="1">
-                <StackLayout
+
+            <StackLayout
                     Padding="10,10,10,10"
                     Orientation="Vertical"
                     Spacing="10">
-                    <Label
+                <Label
                         FontSize="Title"
                         HorizontalOptions="Center"
                         Style="{StaticResource LabelDestaque}"
                         Text="Olá, Fulano!" />
-                </StackLayout>
-            </ScrollView>
-            <ScrollView Grid.Row="2">
-                <StackLayout
-                    Padding="20,10,20,10"
-                    Orientation="Horizontal"
-                    Spacing="10"
-                    VerticalOptions="CenterAndExpand">
-                    <Label
-                        Style="{StaticResource LabelBold}"
-                        Text="Nome: "
-                        VerticalOptions="CenterAndExpand" />
-                    <Entry
-                        x:Name="TxtUserName"
-                        HorizontalOptions="FillAndExpand"
-                        Keyboard="Text"
-                        Placeholder="Digite seu nome"
-                        Text="Fulano" />
-                </StackLayout>
-            </ScrollView>
-            <ScrollView Grid.Row="3">
-                <StackLayout
+            </StackLayout>
+
+
+            <StackLayout
+    Padding="20,10,20,10"
+    Orientation="Horizontal"
+    Spacing="10"
+    VerticalOptions="CenterAndExpand">
+                <Label
+        Style="{StaticResource LabelBold}"
+        Text="Nome: "
+        VerticalOptions="CenterAndExpand" />
+                <Entry
+        x:Name="TxtUserName"
+        HorizontalOptions="FillAndExpand"
+        Keyboard="Text"
+        Placeholder="Digite seu nome"
+        Text="Fulano" />
+            </StackLayout>
+
+            <StackLayout
+    Padding="20,10,20,10"
+    Orientation="Horizontal"
+    Spacing="10">
+                <Label
+        Style="{StaticResource LabelBold}"
+        Text="Sobrenome: "
+        VerticalOptions="CenterAndExpand" />
+                <Entry
+        x:Name="TxtUserLastName"
+        HorizontalOptions="FillAndExpand"
+        Keyboard="Text"
+        Placeholder="Digite seu nome"
+        Text="De Tal" />
+            </StackLayout>
+
+            <StackLayout
                     Padding="20,10,20,10"
                     Orientation="Horizontal"
                     Spacing="10">
-                    <Label
-                        Style="{StaticResource LabelBold}"
-                        Text="Sobrenome: "
-                        VerticalOptions="CenterAndExpand" />
-                    <Entry
-                        x:Name="TxtUserLastName"
-                        HorizontalOptions="FillAndExpand"
-                        Keyboard="Text"
-                        Placeholder="Digite seu nome"
-                        Text="De Tal" />
-                </StackLayout>
-            </ScrollView>
-            <ScrollView Grid.Row="4">
-                <StackLayout
-                    Padding="20,10,20,10"
-                    Orientation="Horizontal"
-                    Spacing="10">
-                    <Label
+                <Label
                         Style="{StaticResource LabelBold}"
                         Text="Nascimento: "
                         VerticalOptions="CenterAndExpand" />
-                    <DatePicker x:Name="DtPcUserBirthDate" HorizontalOptions="FillAndExpand" />
-                </StackLayout>
-            </ScrollView>
-        </Grid>
+                <DatePicker x:Name="DtPcUserBirthDate" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+        </VerticalStackLayout>
+        
+        
         <StackLayout
             Padding="20,24,20,24"
             Spacing="10"
