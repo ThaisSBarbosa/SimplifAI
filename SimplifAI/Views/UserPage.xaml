@@ -3,19 +3,24 @@
     x:Class="SimplifAI.Views.UserPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:SimplifAI">
+    xmlns:vm="clr-namespace:SimplifAI.ViewModels"
+    Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary />
     </ContentPage.Resources>
     <StackLayout>
 
         <VerticalStackLayout>
-            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+            <StackLayout 
+                HorizontalOptions="Fill" 
+                VerticalOptions="FillAndExpand">
                 <StackLayout
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
                     VerticalOptions="Center">
-                    <ContentView Padding="0,20,0,10" VerticalOptions="FillAndExpand">
+                    <ContentView 
+                        Padding="0,20,0,10" 
+                        VerticalOptions="FillAndExpand">
                         <Frame
                             Grid.Row="0"
                             Grid.Column="0"
@@ -33,72 +38,67 @@
             </StackLayout>
 
             <StackLayout
-                    Padding="10,10,10,10"
-                    Orientation="Vertical"
-                    Spacing="10">
+                    Orientation="Vertical">
                 <Label
                         FontSize="Title"
                         HorizontalOptions="Center"
                         Style="{StaticResource LabelDestaque}"
                         Text="Olá, Fulano!" />
+                <Button 
+                    x:Name="BTN_Login" 
+                    Text="Login" 
+                    Clicked="BTN_Login_Clicked"></Button>
             </StackLayout>
 
 
             <StackLayout
-    Padding="20,10,20,10"
-    Orientation="Horizontal"
-    Spacing="10"
-    VerticalOptions="CenterAndExpand">
+                Orientation="Horizontal"
+                VerticalOptions="CenterAndExpand">
                 <Label
-        Style="{StaticResource LabelBold}"
-        Text="Nome: "
-        VerticalOptions="CenterAndExpand" />
+                    Style="{StaticResource LabelBold}"
+                    Text="Nome: "
+                    HorizontalOptions="Center"/>
                 <Entry
-        x:Name="TxtUserName"
-        HorizontalOptions="FillAndExpand"
-        Keyboard="Text"
-        Placeholder="Digite seu nome"
-        Text="Fulano" />
+                    x:Name="TxtUserName"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Text"
+                    Placeholder="Digite seu nome"
+                    Text="Fulano" />
             </StackLayout>
 
             <StackLayout
-    Padding="20,10,20,10"
-    Orientation="Horizontal"
-    Spacing="10">
+                Orientation="Horizontal">
                 <Label
-        Style="{StaticResource LabelBold}"
-        Text="Sobrenome: "
-        VerticalOptions="CenterAndExpand" />
+                    Style="{StaticResource LabelBold}"
+                    Text="Sobrenome: "
+                    VerticalOptions="CenterAndExpand" />
                 <Entry
-        x:Name="TxtUserLastName"
-        HorizontalOptions="FillAndExpand"
-        Keyboard="Text"
-        Placeholder="Digite seu nome"
-        Text="De Tal" />
+                    x:Name="TxtUserLastName"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Text"
+                    Placeholder="Digite seu nome"
+                    Text="De Tal" />
             </StackLayout>
 
             <StackLayout
-                    Padding="20,10,20,10"
-                    Orientation="Horizontal"
-                    Spacing="10">
+                    Orientation="Horizontal">
                 <Label
-                        Style="{StaticResource LabelBold}"
-                        Text="Nascimento: "
-                        VerticalOptions="CenterAndExpand" />
-                <DatePicker x:Name="DtPcUserBirthDate" HorizontalOptions="FillAndExpand" />
+                    Style="{StaticResource LabelBold}"
+                    Text="Nascimento: "
+                    VerticalOptions="CenterAndExpand" />
+                <DatePicker
+                    x:Name="DtPcUserBirthDate" 
+                    HorizontalOptions="FillAndExpand" />
             </StackLayout>
 
         </VerticalStackLayout>
         
         
         <StackLayout
-            Padding="20,24,20,24"
-            Spacing="10"
             VerticalOptions="EndAndExpand">
             <Button
                 x:Name="BtnSalvar"
                 Clicked="BtnSalvar_Clicked"
-                HeightRequest="50"
                 Text="Salvar" />
         </StackLayout>
 

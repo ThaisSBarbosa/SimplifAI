@@ -1,4 +1,8 @@
-﻿using SimplifAI.Views;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SimplifAI.Views;
 
 namespace SimplifAI.ViewModels
 {
@@ -8,7 +12,8 @@ namespace SimplifAI.ViewModels
 
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+            Title = "Login";
+           // LoginCommand = new Command(OnLoginClicked);
         }
 
         private async void OnLoginClicked(object obj)

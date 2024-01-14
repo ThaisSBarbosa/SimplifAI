@@ -36,6 +36,16 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	  <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -55,6 +65,10 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Models\Class1.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -105,7 +119,7 @@
 	  <AndroidResource Include="Resources\drawable\scan.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </AndroidResource>
-	  <AndroidResource Include="Resources\drawable\smart_veredict.png">
+	  <AndroidResource Include="Resources\drawable\smart_veredict_logo.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </AndroidResource>
 	  <AndroidResource Include="Resources\drawable\user.png">
@@ -119,6 +133,7 @@
 	  </AndroidResource>
 	  <AndroidResource Include="Resources\values\colors.xml" />
 	  <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -186,11 +201,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -211,4 +230,20 @@
 	  </MauiFont>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Resources\xml\file_paths.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\TextoConvertidoPage.xaml.cs">
+      <DependentUpon>TextoConvertidoPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
 </Project>

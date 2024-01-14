@@ -12,22 +12,35 @@
 
 
     <ContentPage.Content>
+        
         <StackLayout
-            Padding="30,24,30,24"
             Orientation="Vertical"
-            Spacing="10">
-
+            Spacing="0">
+            <BoxView HeightRequest="10" Color="{StaticResource BgTela}"/>
             <StackLayout VerticalOptions="Start">
                 <Button
                     x:Name="BtnCapturarCamera"
                     Clicked="BtnCapturarCamera_Clicked"
                     HeightRequest="50"
                     Text="Capturar foto com câmera" />
-                <Label Margin="0,20,0,0" Text="Fotos capturadas:" />
-
-
-
+                <Label Text="Fotos capturadas:" />
+                <Image x:Name="ImagensCamera" 
+                       Source="{Binding CompletePhotoPath,Mode=TwoWay}"
+                       IsVisible="{Binding HasPhoto}" 
+                       HeightRequest="300"
+                       VerticalOptions="FillAndExpand"/>
             </StackLayout>
+            <CollectionView ItemsSource="{Binding fotos}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding CaminhoDaFoto}" Aspect="AspectFill" WidthRequest="100" HeightRequest="100"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <StackLayout VerticalOptions="EndAndExpand">
                 <Button
                     x:Name="BtnSimplifAI"

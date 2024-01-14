@@ -5,16 +5,12 @@ using System.Text;
 
 namespace SimplifAI.ViewModels
 {
-	public class TextoConvertidoModel : ContentPage
+	public class TextoConvertidoModel : BaseViewModel
 	{
 		public TextoConvertidoModel ()
 		{
             Title = "Texto convertido";
-            Content = new StackLayout {
-				Children = {
-					new Label { Text = "Welcome to Xamarin.Forms!" }
-				}
-			};
+
 		}
 	}
 }

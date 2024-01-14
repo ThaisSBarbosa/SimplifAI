@@ -19,6 +19,9 @@ namespace SimplifAI.Views
 
         }
 
-        
+        private void BTN_Login_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.LoginPage());
+        }
     }
 }

@@ -3,15 +3,164 @@
     x:Class="SimplifAI.Views.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Shell.NavBarIsVisible="False"
-    mc:Ignorable="d">
-    <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button
-                Command="{Binding LoginCommand}"
-                Text="Login"
-                VerticalOptions="Center" />
+    xmlns:vm="clr-namespace:SimplifAI.ViewModels"
+    Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+    <StackLayout>
+        <VerticalStackLayout>
+        <StackLayout 
+            HorizontalOptions="Fill" 
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
+                <ContentView 
+                    Padding="0,20,0,10" 
+                    VerticalOptions="FillAndExpand">
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="0"
+                        BorderColor="White"
+                        CornerRadius="170"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Image Aspect="AspectFill" Source="user.png" />
+                        
+                    </Frame>
+                </ContentView>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                Style="{StaticResource LabelBold}"
+                Text="Nome: "
+                VerticalOptions="CenterAndExpand" />
+            <Entry
+                x:Name="TxtUserName"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Text"
+                Placeholder="Digite seu nome"
+                Text="Fulano" />
+        </StackLayout>
+        <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                Style="{StaticResource LabelBold}"
+                Text="Sobrenome: "
+                VerticalOptions="CenterAndExpand" />
+            <Entry
+                x:Name="TxtUserLastName"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Text"
+                Placeholder="Digite seu sobrenome"
+                Text="De Tal" />
+        </StackLayout>
+
+
+        <StackLayout
+            Orientation="Horizontal">
+            <Label
+             Style="{StaticResource LabelBold}"
+             Text="Aniversário: "
+             VerticalOptions="CenterAndExpand" />
+            <DatePicker x:Name="DtPcUserBirthDate" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+
+        <StackLayout
+            Orientation="Horizontal">
+            <Label
+                Style="{StaticResource LabelBold}"
+                Text="Email: "
+                VerticalOptions="CenterAndExpand" />
+            <Entry
+                x:Name="TxtUserMail"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Email"
+                Placeholder="nome@mail"
+                Text="fabia@simplifai.com" />
+        </StackLayout>
+
+
+        <StackLayout
+            Orientation="Horizontal">
+            <Label
+                Style="{StaticResource LabelBold}"
+                Text="Repita email: "
+                VerticalOptions="CenterAndExpand" />
+            <Entry
+                x:Name="TxtUserMailCheck"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Email"
+                Placeholder="nome@mail"
+                Text="fabia@simplifai.com" />
+        </StackLayout>
+
+            <StackLayout
+                Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource LabelBold}"
+                    Text="Senha: "
+                    VerticalOptions="CenterAndExpand" />
+                <Entry
+                    x:Name="TxtUserPass"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Default"                    
+                    Placeholder="Digite a senha"
+                    IsPassword="True"/>
+            </StackLayout>
+
+
+            <StackLayout
+                Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource LabelBold}"
+                    Text="Repita senha: "
+                    VerticalOptions="CenterAndExpand" />
+                <Entry
+                    x:Name="TxtUserPassCheck"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Default"
+                    Placeholder="Repita a senha"
+                    IsPassword="True"/>
+            </StackLayout>
+
+            <StackLayout
+            Orientation="Horizontal">
+            <CheckBox
+                x:Name="ChBxCheckTerms"
+                HorizontalOptions="Start" />
+            <Label
+                HorizontalTextAlignment="Center"
+                VerticalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span FontFamily="Font_Montserrat-Light" Text="Eu aceito os " />
+                            <Span Style="{StaticResource LabelBold}" Text="Termos e Condições" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+                </StackLayout>
+        
+                <BoxView HeightRequest="10" Color="{StaticResource BgTela}"/>
+                <Button x:Name="BTN_SignIn" Text="Cadastrar" Clicked="BTN_SignIn_Clicked" VerticalOptions="EndAndExpand"/>
+
+            </VerticalStackLayout>
+        
+    </StackLayout>
+    </ScrollView>
 </ContentPage>
