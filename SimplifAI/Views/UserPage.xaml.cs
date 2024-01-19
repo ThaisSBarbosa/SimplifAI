@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimplifAI.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace SimplifAI.Views
 		public UserPage ()
 		{
 			InitializeComponent ();
+            var testeOCR = OCRService.LeImagem();
 		}
 
         private void BtnSalvar_Clicked(object sender, EventArgs e)
