@@ -72,6 +72,7 @@
 
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.png" />
+	  <MauiImage Remove="Resources\Images\exemplo.png" />
 	  <MauiImage Remove="Resources\Images\printed_text.jpg" />
 	</ItemGroup>
 
@@ -107,6 +108,7 @@
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\Images\exemplo.png" />
 	  <None Remove="Resources\values\colors.xml" />
 	  <None Remove="Resources\values\styles.xml" />
 	</ItemGroup>
@@ -146,6 +148,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+	  <EmbeddedResource Include="Resources\Images\exemplo.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Resources\Images\printed_text.jpg">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -216,6 +221,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Azure.AI.FormRecognizer" Version="4.1.0" />
+		<PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />

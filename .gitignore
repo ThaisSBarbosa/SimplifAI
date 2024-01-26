@@ -578,3 +578,4 @@ FodyWeavers.xsd
 
 appsettings.json
 /ocr-di/form_recognizer_quickstart
+/gpt/azure-openai-quickstart

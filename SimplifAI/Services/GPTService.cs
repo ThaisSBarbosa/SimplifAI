@@ -1,27 +1,56 @@
-﻿//using SimplifAI.Utils;
-//using System;
-//using System.Threading.Tasks;
-//using Teste_API_GPT;
+﻿using Azure.AI.OpenAI;
+using Azure;
+using SimplifAI.Utils;
 
-//namespace SimplifAI.Services
-//{
-//    public static class GPTService
-//    {
-//        public static async Task<string> EnviaTexto(string msg)
-//        {
-//            var configuracao = Helper.GetConfiguracoes();
+namespace SimplifAI.Services
+{
+    public static class GPTService
+    {
+        public static string EnviaTexto(string msg)
+        {
+            var configuracao = Helper.GetConfiguracoes();
+            var endpoint = configuracao["GPT_ENDPOINT"];
+            var key = configuracao["GPT_API_KEY"];
 
-//            IOpenAIProxy chatOpenAI = new OpenAIProxy(
-//                apiKey: configuracao["GPT_API_KEY"],
-//                organizationId: configuracao["GPT_ORG_ID"]);
+            OpenAIClient client = new OpenAIClient(new Uri(endpoint), new AzureKeyCredential(key));
 
-//            var results = await chatOpenAI.SendChatMessage(msg);
+            Response<ChatCompletions> responseWithoutStream = client.GetChatCompletions("deploy-gpt-simplify",
+                new ChatCompletionsOptions()
+                {
+                    Messages =
+                    {
+                        //new ChatMessage(ChatRole.System, @"You are an AI assistant that helps people find information."),
+                        new ChatMessage(ChatRole.User, msg),
+                        //new ChatMessage(ChatRole.Assistant, @"Microsoft was founded on April 4, 1975."),
+                    },
+                    Temperature = (float)0.7,
+                    MaxTokens = 2000,
+                    NucleusSamplingFactor = (float)0.95,
+                    FrequencyPenalty = 0,
+                    PresencePenalty = 0,
+                });
 
-//            string resultado = string.Empty;
-//            foreach (var item in results)
-//                resultado += $"{item.Role}: {item.Content}";
+            ChatCompletions response = responseWithoutStream.Value;
 
-//            return resultado;
-//        }
-//    }
-//}
+            string resultado = string.Empty;
+
+            if (response != null)
+            {                
+                foreach (var choice in response.Choices)
+                    resultado += "\n" + choice.Message.Content;
+            }
+
+            //IOpenAIProxy chatOpenAI = new OpenAIProxy(
+            //    apiKey: configuracao["GPT_API_KEY"],
+            //    organizationId: configuracao["GPT_ORG_ID"]);
+
+            //var results = await chatOpenAI.SendChatMessage(msg);
+
+            //string resultado = string.Empty;
+            //foreach (var item in results)
+            //    resultado += $"{item.Role}: {item.Content}";
+
+            return resultado;
+        }
+    }
+}

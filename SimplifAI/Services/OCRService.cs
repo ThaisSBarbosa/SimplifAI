@@ -15,7 +15,7 @@ namespace SimplifAI.Services
             AzureKeyCredential credential = new AzureKeyCredential(key);
             DocumentAnalysisClient client = new DocumentAnalysisClient(new Uri(endpoint), credential);
 
-            Stream imageStream = Helper.RetornaStreamRecursoIncorporado("Resources.Images.printed_text.jpg");
+            Stream imageStream = Helper.RetornaStreamRecursoIncorporado("Resources.Images.exemplo.png");
             AnalyzeDocumentOperation operation = client.AnalyzeDocument(WaitUntil.Completed, "prebuilt-layout", imageStream);
 
             return operation.Value.Content;
