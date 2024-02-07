@@ -108,7 +108,19 @@
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\Images\check_empty.png" />
+	  <None Remove="Resources\Images\check_filled.png" />
+	  <None Remove="Resources\Images\edit_img.png" />
+	  <None Remove="Resources\Images\edit_img_edit.png" />
+	  <None Remove="Resources\Images\erase_img.png" />
+	  <None Remove="Resources\Images\erase_img_edit.png" />
+
 	  <None Remove="Resources\Images\exemplo.png" />
+
+	  <None Remove="Resources\Images\add_img.png" />
+	  <None Remove="Resources\Images\add_img_white.png" />
+	  <None Remove="Resources\Images\smart_veredict.png" />
+
 	  <None Remove="Resources\values\colors.xml" />
 	  <None Remove="Resources\values\styles.xml" />
 	</ItemGroup>
@@ -222,6 +234,7 @@
 	<ItemGroup>
 		<PackageReference Include="Azure.AI.FormRecognizer" Version="4.1.0" />
 		<PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -229,6 +242,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.3" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
 	</ItemGroup>
@@ -265,6 +279,33 @@
     <Compile Update="Views\TextoConvertidoPage.xaml.cs">
       <DependentUpon>TextoConvertidoPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiImage Update="Resources\Images\add_img.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\add_img_white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\check_empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\check_filled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\edit_img.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\erase_img_edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\erase_img.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\smart_veredict.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </MauiImage>
   </ItemGroup>
   
 </Project>

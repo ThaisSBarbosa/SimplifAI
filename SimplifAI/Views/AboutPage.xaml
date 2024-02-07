@@ -26,7 +26,7 @@
                     VerticalOptions="Center">
                     <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
                         <Image
-                            HeightRequest="100"
+                            HeightRequest="120"
                             Source="smart_veredict.png"
                             VerticalOptions="Center" />
                     </ContentView>
