@@ -26,5 +26,16 @@ namespace SimplifAI.Utils
                     return JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.ReadToEnd());
             }
         }
+
+        public static Stream RetornaStreamFoto(string caminhoFoto)
+        {
+            if (!File.Exists(caminhoFoto))
+            {
+                throw new FileNotFoundException("O arquivo de foto não foi encontrado.", caminhoFoto);
+            }
+
+            // Abre o arquivo de foto e retorna um objeto Stream
+            return File.OpenRead(caminhoFoto);
+        }
     }
 }

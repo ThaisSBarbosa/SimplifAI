@@ -7,7 +7,7 @@
     Title="{Binding Title}">
 
     <ContentPage.BindingContext>
-        <vm:ScanViewModel x:Name="scanViewModel" />
+        <vm:ScanViewModel x:Name="ScanViewModel" />
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
@@ -20,13 +20,14 @@
 
 
 
-            <ScrollView Grid.Row="1" >
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Always">
                 <StackLayout VerticalOptions="StartAndExpand">
                     <CollectionView 
                         ItemsSource="{Binding ListaAquivos}" 
                         Margin="10,10,10,10" 
                         HorizontalOptions="FillAndExpand" 
                         VerticalOptions="FillAndExpand"
+                        SelectionMode="{Binding ModoSelecao}"
                         >
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="10" HorizontalItemSpacing="10" />
@@ -41,13 +42,14 @@
                                             StrokeShape="RoundRectangle 10,10,10,10"
                                             StrokeDashArray="2,1"
                                             Background="{StaticResource BgTela}">
-                                        <Image Source="{Binding caminho}" Aspect="AspectFit" WidthRequest="250"/>
+                                        <Image Source="{Binding Caminho}" Aspect="AspectFit" WidthRequest="300"/>
                                     </Border>
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
+                    
                     <Border Stroke="{StaticResource Main}"
                             StrokeThickness="4"
                             StrokeShape="RoundRectangle 10,10,10,10"
@@ -81,6 +83,7 @@
                     HeightRequest="50"
                     Text="SimplifAI" />
             </StackLayout>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

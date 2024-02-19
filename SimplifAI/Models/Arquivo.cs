@@ -9,23 +9,19 @@ namespace SimplifAI.Models
 {
     public class Arquivo : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public string caminho { get; set; }
-        private bool apaga;
-        private bool seleciona;
-
-        public bool Apaga
+        public Arquivo()
         {
-            get { return apaga; }
-            set
-            {
-                if (apaga != value)
-                {
-                    apaga = value;
-                    OnPropertyChanged(nameof(Apaga));
-                }
-            }
+            this.seleciona = false;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string Caminho { get; set; }
+        public string TextoOriginal { get; set; }
+
+        public string TextoSimplificado { get; set; }
+
+        
+        private bool seleciona;  
         public bool Seleciona
         {
             get { return seleciona; }
@@ -38,11 +34,7 @@ namespace SimplifAI.Models
                 }
             }
         }
-        public Arquivo()
-        {
-            this.apaga = false;
-            this.seleciona = false;
-        }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
