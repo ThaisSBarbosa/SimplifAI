@@ -20,10 +20,11 @@
         <Setter Property="SelectedIndicatorColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
     </Style>
 
-    <Style TargetType="Border">
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
-        <Setter Property="StrokeShape" Value="Rectangle" />
-        <Setter Property="StrokeThickness" Value="1" />
+    <Style x:Key="BorderShadow" TargetType="Border">
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Shadow.Offset" Value="10,10" />
+        <Setter Property="Shadow.Radius" Value="40" />
+        <Setter Property="Shadow.Opacity" Value="0.2" />
     </Style>
 
     <Style TargetType="BoxView">
@@ -179,9 +180,13 @@
 
     <Style TargetType="Frame">
         <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="CornerRadius" Value="8" />
     </Style>
+
+    
+
 
     <Style TargetType="ImageButton">
         <Setter Property="Opacity" Value="1" />

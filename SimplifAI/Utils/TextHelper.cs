@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimplifAI.Utils
 {
-    internal static class TextoHelper
+    internal static class TextHelper
     {
         //private double _metricaFK;
         //private double _metricaGF;

@@ -16,8 +16,6 @@ using SimplifAI.Models;
 using SimplifAI.Utils;
 using SkiaSharp;
 using Microsoft.Maui.Graphics;
-using System.Runtime.CompilerServices;
-
 
 
 namespace SimplifAI.Views
@@ -38,6 +36,13 @@ namespace SimplifAI.Views
         private async void BtnSimplifAI_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new LoadingPage());
+            if (!ErrorHelper.checkAcessoServicos())
+            {                
+                await Navigation.PopModalAsync();
+                await Navigation.PushModalAsync(new ErrorPage("Sem Internet!"));
+                //await Navigation.PopModalAsync();
+                return;
+            }
             //Loading();
             testeOCR();
             simplifAI();
@@ -60,26 +65,8 @@ namespace SimplifAI.Views
         private void simplifAI()
         {
             _resultado.TextoSimpliicado = GPTService.EnviaTexto(_resultado.TextoOriginal);
-            _resultado.MetricaGeral = TextoHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
+            _resultado.MetricaGeral = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
         }
-
-        //private void Loading()
-        //{
-            
-        //    if (loading)
-        //    {
-        //        BV_Loading.IsVisible = false;
-        //        AI_Rodinha.IsVisible = false;
-        //        AI_Rodinha.IsRunning = false;
-        //    } else
-        //    {
-
-        //        BV_Loading.IsVisible = true;
-        //        AI_Rodinha.IsVisible = true;
-        //        AI_Rodinha.IsRunning = true;
-        //    }
-        //    loading = !loading;
-        //}
 
     }
 }

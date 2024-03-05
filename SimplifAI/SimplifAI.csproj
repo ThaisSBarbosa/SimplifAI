@@ -277,6 +277,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ErrorPage.xaml.cs">
+      <DependentUpon>ErrorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TextoSimplificadoPage.xaml.cs">
       <DependentUpon>TextoSimplificadoPage.xaml</DependentUpon>
     </Compile>
@@ -325,6 +328,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\ErrorPage.xaml">
+      <Generator></Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\LoadingPage.xaml">
       <Generator></Generator>
     </MauiXaml>

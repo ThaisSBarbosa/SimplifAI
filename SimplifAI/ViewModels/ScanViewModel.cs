@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using SimplifAI.Models;
+using SimplifAI.Utils;
 using SkiaSharp;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,37 +13,15 @@ namespace SimplifAI.ViewModels
     public partial class ScanViewModel : BaseViewModel
     {
         private static string pastaAndroid;
-
-        private static string criaDirTemp()
-        {
-            // Cria o diretório temporário
-            string pastaTemp = System.IO.Path.Combine(Microsoft.Maui.Storage.FileSystem.Current.AppDataDirectory, "SimplifAI Temp");
-
-            try
-            {
-                System.IO.Directory.CreateDirectory(pastaTemp);
-                return pastaTemp;
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao criar pasta temporária: {ex.Message}");
-                return null;
-            }
-        }
-
-
-
-
         public ScanViewModel()
         {
-            //apagaConteudoPasta();
+            //ApagaConteudoPasta();
             listaAquivos = new ObservableCollection<Arquivo>(); ;
 
             Title = "Leitura";
             ExcluirItemCommand = new Command<Arquivo>(ExcluirArquivo);
             ModoSelecao = SelectionMode.None;
-            pastaAndroid = criaDirTemp();
+            pastaAndroid = FileHelper.CriaDirTemp();
         }
 
         private ObservableCollection<Arquivo> listaAquivos;
@@ -92,63 +71,26 @@ namespace SimplifAI.ViewModels
             }
         }
 
-        private async Task<Stream> CompressImage(byte[] originalStream)
+        [RelayCommand]
+        private async void capturaFoto()
         {
             try
             {
-                // Carregar a imagem original
-                using (var originalBitmap = SKBitmap.Decode(originalStream))
-                {
-                    var originalBitmapRotated = Rotate(originalStream);
-                    var width = originalBitmapRotated.Width;
-                    var height = originalBitmapRotated.Height;
-
-                    // Redimensionar a imagem para uma largura máxima de 100 pixels
-                    //var resizedBitmap = originalBitmap.Resize(new SKImageInfo(width, height), SKFilterQuality.High);
-                    var resizedBitmap = originalBitmapRotated.Resize(new SKImageInfo(width, height), SKFilterQuality.High);
-
-                    // Converter o bitmap redimensionado de volta para um stream
-                    var compressedStream = new MemoryStream();
-                    resizedBitmap.Encode(compressedStream, SKEncodedImageFormat.Jpeg, 100);
-
-                    // Reiniciar a posição do stream para o início
-                    compressedStream.Position = 0;
-
-                    return compressedStream;
-                }
+                var media = await Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync();
+                var streamMedia = media.OpenReadAsync().Result;
+                var foto = await ImageHelper.ConvertAndCompressImage(streamMedia);
+                var a = new Arquivo();
+                a.Caminho = await FileHelper.GuardaArquivoNoDir(foto, "_foto.jpg", pastaAndroid);
+                ListaAquivos.Add(a);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                // Lidar com exceções, se houver
-                return null;
+                Console.WriteLine("Erro ao capturar foto: " + e.Message);
             }
-            finally
-            {
-                //originalStream?.Dispose();
-            }
+
         }
 
-        public static SKBitmap Rotate(byte[] photo)
-        {
-            using (var bitmap = SKBitmap.Decode(photo))
-            {
-
-
-                var rotated = new SKBitmap(bitmap.Height, bitmap.Width);
-
-                using (var surface = new SKCanvas(rotated))
-                {
-                    surface.Translate(rotated.Width, 0);
-                    surface.RotateDegrees(90);
-                    surface.DrawBitmap(bitmap, 0, 0);
-                }
-
-                return rotated;
-            }
-        }
-
-        [RelayCommand]
-        private async void capturaFoto()
+        private async void capturaFotoOld()
         {
             try
             {
@@ -165,7 +107,7 @@ namespace SimplifAI.ViewModels
 
                 // ######## resize? 
 
-                var imagemMenor = await CompressImage(imageData);
+                var imagemMenor = await ImageHelper.CompressImage(imageData);
 
 
                 using (var ms = new MemoryStream())
@@ -251,7 +193,7 @@ namespace SimplifAI.ViewModels
             if (resposta)
             {
                 ListaAquivos.Clear();
-                apagaConteudoPasta();
+                FileHelper.ApagaConteudoPasta(pastaAndroid);
             }
             else
             {
@@ -259,24 +201,6 @@ namespace SimplifAI.ViewModels
             }
         }
 
-        public static void apagaConteudoPasta()
-        {
-            var arquivos = System.IO.Directory.GetFiles(pastaAndroid);
-
-            try
-            {
-                // Itera sobre cada arquivo e o exclui
-                foreach (var arquivo in arquivos)
-                {
-                    File.Delete(arquivo);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Deu erro ao deletar os arquivos da pasta. Motivo:");
-                Console.WriteLine(ex.Message);
-            }
-        }
 
         #endregion
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 
-
 [assembly: ExportFont("WatermelonSugar.ttf", Alias = "Font_WatermelonSugar")]
 [assembly: ExportFont("Montserrat-Black.ttf", Alias = "Font_Montserrat-Black")]
 [assembly: ExportFont("Montserrat-BlackItalic.ttf", Alias = "Font_Montserrat-BlackItalic")]
