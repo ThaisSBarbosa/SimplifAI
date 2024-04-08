@@ -19,8 +19,8 @@ namespace SimplifAI.Services
                 {
                     Messages =
                     {
-                        //new ChatMessage(ChatRole.System, @"You are an AI assistant that helps people find information."),
-                        new ChatMessage(ChatRole.User, msg),
+                        new ChatMessage(ChatRole.System, PromptHelper.retornaMsgSystem()),
+                        new ChatMessage(ChatRole.User, msg + PromptHelper.retornaPrompt()),
                         //new ChatMessage(ChatRole.Assistant, @"Microsoft was founded on April 4, 1975."),
                     },
                     Temperature = (float)0.7,

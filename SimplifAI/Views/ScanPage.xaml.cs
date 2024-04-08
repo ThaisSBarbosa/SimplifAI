@@ -60,8 +60,7 @@ namespace SimplifAI.Views
         }
         private void simplifAI()
         {
-            var textoCompleto = _resultado.TextoOriginal + PromptHelper.retornaPrompt();
-            _resultado.TextoSimpliicado = GPTService.EnviaTexto(textoCompleto);
+            _resultado.TextoSimpliicado = GPTService.EnviaTexto(_resultado.TextoOriginal);
             _resultado.MetricaGeral = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
         }
 

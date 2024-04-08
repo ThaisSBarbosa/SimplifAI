@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POCNeo4J", "POCNeo4J\POCNeo4J.csproj", "{FB39F3D3-68B8-42D1-BCCD-14DFAABEDEE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB39F3D3-68B8-42D1-BCCD-14DFAABEDEE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB39F3D3-68B8-42D1-BCCD-14DFAABEDEE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB39F3D3-68B8-42D1-BCCD-14DFAABEDEE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB39F3D3-68B8-42D1-BCCD-14DFAABEDEE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {189508A7-751F-47F7-AFAE-7B7D56B33E9D}
+	EndGlobalSection
+EndGlobal
