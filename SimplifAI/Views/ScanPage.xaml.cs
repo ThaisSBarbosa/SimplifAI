@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimplifAI.Services;
-using System.Reflection;
-using System.IO;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
-using System.Security.Cryptography;
+﻿using SimplifAI.Services;
 using SimplifAI.ViewModels;
-using Microsoft.Maui.Controls;
-using CommunityToolkit.Mvvm.Input;
 using SimplifAI.Models;
 using SimplifAI.Utils;
-using SkiaSharp;
-using Microsoft.Maui.Graphics;
 
 
 namespace SimplifAI.Views
@@ -26,6 +12,7 @@ namespace SimplifAI.Views
         private bool loading;
         private ScanViewModel _scanViewModel;
         public Resultado _resultado = Resultado.GetInstance();
+        private string imagemSemInternet = "./no_internet.png";
         public ScanPage()
         {
             InitializeComponent();
@@ -35,21 +22,30 @@ namespace SimplifAI.Views
 
         private async void BtnSimplifAI_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new LoadingPage());
-            if (!ErrorHelper.checkAcessoServicos())
-            {                
+            if (_scanViewModel.ListaAquivos.Count > 0)
+            {
+                if (!ErrorHelper.checkAcessoServicos())
+                {
+                    //await Navigation.PopModalAsync();
+                    //await Navigation.PushModalAsync(new ErrorPage("Sem Internet!", imagemSemInternet));
+                    var ep = new ErrorPage2();
+                    
+                    await ep.OpenBottomSheet();
+                    //await Navigation.PushModalAsync(new ErrorPage2());
+                    //await Navigation.PopModalAsync();
+                    return;
+                }
+                await Navigation.PushModalAsync(new LoadingPage());
+               
+                //Loading();
+                testeOCR();
+                simplifAI();
                 await Navigation.PopModalAsync();
-                await Navigation.PushModalAsync(new ErrorPage("Sem Internet!"));
-                //await Navigation.PopModalAsync();
-                return;
-            }
-            //Loading();
-            testeOCR();
-            simplifAI();
-            await Navigation.PopModalAsync();
-            //Loading();
-            await Navigation.PushAsync(new ViewModels.TextoSimplificado());
-
+                //Loading();
+                await Navigation.PushAsync(new ViewModels.TextoSimplificado());
+            } else
+            {
+                 await DisplayAlert("Erro","Não há fotos na lista!","Ok");            }
         }
 
 
@@ -58,13 +54,14 @@ namespace SimplifAI.Views
             _resultado.TextoOriginal = string.Empty;
             foreach (var arquivo in _scanViewModel.ListaAquivos)
             {
-                _resultado.TextoOriginal += OCRService.LeImagem(arquivo.Caminho);
+                _resultado.TextoOriginal += OCRService.LeDocumento(arquivo.Caminho);
             }
 
         }
         private void simplifAI()
         {
-            _resultado.TextoSimpliicado = GPTService.EnviaTexto(_resultado.TextoOriginal);
+            var textoCompleto = _resultado.TextoOriginal + PromptHelper.retornaPrompt();
+            _resultado.TextoSimpliicado = GPTService.EnviaTexto(textoCompleto);
             _resultado.MetricaGeral = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
         }
 

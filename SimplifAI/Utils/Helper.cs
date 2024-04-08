@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
 using System.Text;
 
@@ -27,15 +25,6 @@ namespace SimplifAI.Utils
             }
         }
 
-        public static Stream RetornaStreamFoto(string caminhoFoto)
-        {
-            if (!File.Exists(caminhoFoto))
-            {
-                throw new FileNotFoundException("O arquivo de foto não foi encontrado.", caminhoFoto);
-            }
 
-            // Abre o arquivo de foto e retorna um objeto Stream
-            return File.OpenRead(caminhoFoto);
-        }
     }
 }

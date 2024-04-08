@@ -1,10 +1,4 @@
-﻿using SimplifAI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace SimplifAI.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -14,7 +8,7 @@ namespace SimplifAI.Views
 		{
 			InitializeComponent ();
 
-            //var testeOCR = OCRService.LeImagem();
+            //var testeOCR = OCRService.LeDocumento();
             //var testeGPT = GPTService.EnviaTexto("Simplifique explicando de maneira mais fácil este texto " +
             //    "jurídico para alguém que não possui familiaridade com o meio: " + testeOCR);
 		}

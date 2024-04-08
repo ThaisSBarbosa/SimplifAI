@@ -13,14 +13,60 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,10,0,0">
-                <Label Style="{StaticResource LabelBold}" Text="Texto original:" />
-                <Label Text="{Binding TextoOriginal}" />
-                <Label Style="{StaticResource LabelBold}" Text="Texto simplificado:" />
-                <Label Text="{Binding TextoSimplificado}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="1*"  />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0" >
+                        <Label Style="{StaticResource LabelBold}" Text="Texto simplificado" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ExpandeSimplificado"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
+                        <ImageButton x:Name="btnExpandSimplificado" Style="{StaticResource IB_Icone}" Source="arrow_down.png" Clicked="ExpandeSimplificado" />
+                    </StackLayout>
+                    <StackLayout x:Name="TextoSimples" Style="{StaticResource ExpandView}" IsVisible="True" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="{Binding TextoSimplificado}" />
+                    </StackLayout>
+                </Grid>
+
+
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*" />
+                        <ColumnDefinition Width="*"  />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" >
+                            <Label Style="{StaticResource LabelBold}" Text="Texto original" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btnExpandOriginal_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
+                        <ImageButton x:Name="btnExpandOriginal" Style="{StaticResource IB_Icone}" Source="arrow_right.png" Clicked="btnExpandOriginal_Clicked" />
+                    </StackLayout>
+                    <StackLayout x:Name="TextoOriginal" Style="{StaticResource ExpandView}" IsVisible="False" Grid.Row="1" Grid.ColumnSpan="2">
+                        <Label Text="{Binding TextoOriginal}" />
+                    </StackLayout>
+                </Grid>
 
 
                 <Label Style="{StaticResource LabelBold}" Text="Métricas:" />
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="5,5,5,5">
                     <ProgressBar Progress="{Binding MetricaGeral}"
                                HeightRequest="15"
                                WidthRequest="250"
@@ -31,9 +77,13 @@
                                />
                     <Label Style="{StaticResource LabelBold}" Text="{Binding MetricaGeral, StringFormat='{0:P0}'}" />
                 </StackLayout>
+                
+                
+
 
                 <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Center">
-                    <Label Style="{StaticResource LabelDestaque}" FontSize="Title" Text="Avalie-nos:" HorizontalOptions="Center" />
+                    <Label Style="{StaticResource LabelDestaque}" FontSize="Title" Text="Avalie-nos:" HorizontalOptions="Center">
+                    </Label>
 
                     <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
 

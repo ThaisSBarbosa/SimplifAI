@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using SimplifAI.Models;
 using SimplifAI.Utils;
-using SkiaSharp;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -78,63 +77,10 @@ namespace SimplifAI.ViewModels
             {
                 var media = await Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync();
                 var streamMedia = media.OpenReadAsync().Result;
-                var foto = await ImageHelper.ConvertAndCompressImage(streamMedia);
+                var foto = await ImageHelper.RetornoEmBytes(streamMedia);
                 var a = new Arquivo();
                 a.Caminho = await FileHelper.GuardaArquivoNoDir(foto, "_foto.jpg", pastaAndroid);
                 ListaAquivos.Add(a);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erro ao capturar foto: " + e.Message);
-            }
-
-        }
-
-        private async void capturaFotoOld()
-        {
-            try
-            {
-                var photo = await Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync();
-                var stream = photo.OpenReadAsync().Result;
-                byte[] imageData;
-                byte[] imageMenorData;
-
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    stream.CopyTo(ms);
-                    imageData = ms.ToArray();
-                }
-
-                // ######## resize? 
-
-                var imagemMenor = await ImageHelper.CompressImage(imageData);
-
-
-                using (var ms = new MemoryStream())
-                {
-                    imagemMenor.CopyTo(ms);
-                    imageMenorData = ms.ToArray();
-                }
-
-
-
-                // #############
-
-
-                if (!File.Exists(pastaAndroid))
-                {
-                    System.IO.Directory.CreateDirectory(pastaAndroid);
-                }
-                var nomeFoto = Guid.NewGuid() + "_foto.jpg";
-                var newFile = Path.Combine(pastaAndroid, nomeFoto);
-                using (var stream2 = new MemoryStream(imageMenorData))
-                using (var newStream = File.OpenWrite(newFile))
-                {
-                    await stream2.CopyToAsync(newStream);
-                    var a = new Arquivo();
-                    a.Caminho = newFile;
-                    ListaAquivos.Add(a);
-                }
             }
             catch (Exception e)
             {

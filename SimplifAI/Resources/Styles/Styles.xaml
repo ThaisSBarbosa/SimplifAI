@@ -236,6 +236,33 @@
         </Setter>
     </Style>
 
+
+    <Style x:Key="IB_Icone" TargetType="ImageButton">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HeightRequest" Value="20" />
+        <Setter Property="WidthRequest" Value="20" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.5" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver" />
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
     <!-- **** LABEL **** -->
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource ColorTextNormal}" />
@@ -256,12 +283,6 @@
             </VisualStateGroupList>
         </Setter>
     </Style>
-    
-    <!-- **** SCROLL VIEW *****-->
-    <Style TargetType="ScrollView">
-        <Setter Property="VerticalScrollBarVisibility" Value="Always" />
-        
-    </Style>
 
     <Style x:Key="LabelDestaque" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource ColorHighLight}"></Setter>
@@ -276,6 +297,14 @@
         <Setter Property="FontAttributes" Value="Italic" />
     </Style>
 
+
+    <!-- **** SCROLL VIEW *****-->
+    <Style TargetType="ScrollView">
+        <Setter Property="VerticalScrollBarVisibility" Value="Always" />
+        
+
+    </Style>
+    
     <Style TargetType="Span">
         <Setter Property="FontFamily" Value="Font_Montserrat-Bold" />
         <Setter Property="FontSize" Value="Medium" />
@@ -491,11 +520,20 @@
         </Setter>
     </Style>
 
+    <!-- **** STACK LAYOUT *****-->
     <Style TargetType="StackLayout">
-        <Setter Property="Padding" Value="10,0,10,10" />
+        <Setter Property="Padding" Value="5,5,5,5" />
         <Setter Property="Spacing" Value="10" />
     </Style>
-    
+    <Style x:Key="ExpandView" TargetType="StackLayout">
+        <Setter Property="Padding" Value="10,10,10,10" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="Spacing" Value="1" />
+        <Setter Property="WidthRequest" Value="400"/>
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="BackgroundColor" Value="#F9F9F9"/>
+    </Style>
 
     <Style ApplyToDerivedTypes="True" TargetType="Page">
         <Setter Property="Padding" Value="0" />

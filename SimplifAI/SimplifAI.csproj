@@ -73,6 +73,7 @@
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.png" />
 	  <MauiImage Remove="Resources\Images\printed_text.jpg" />
+	  <MauiImage Remove="Resources\Images\tattoo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -107,6 +108,8 @@
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\Images\arrow_down.png" />
+	  <None Remove="Resources\Images\arrow_right.png" />
 	  <None Remove="Resources\Images\check_empty.png" />
 	  <None Remove="Resources\Images\check_filled.png" />
 	  <None Remove="Resources\Images\edit_img.png" />
@@ -118,11 +121,13 @@
 
 	  <None Remove="Resources\Images\add_img.png" />
 	  <None Remove="Resources\Images\add_img_white.png" />
+	  <None Remove="Resources\Images\no_internet.png" />
 	  <None Remove="Resources\Images\smart_veredict.png" />
 	  <None Remove="Resources\Images\star_empty.png" />
 	  <None Remove="Resources\Images\star_filled.png" />
 	  <None Remove="Resources\Images\star_thin_empty.png" />
 	  <None Remove="Resources\Images\star_thin_filled.png" />
+	  <None Remove="Resources\Images\tattoo.png" />
 
 	  <None Remove="Resources\values\colors.xml" />
 	  <None Remove="Resources\values\styles.xml" />
@@ -164,6 +169,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 	  <EmbeddedResource Include="Resources\Images\printed_text.jpg">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Resources\Images\tattoo.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	</ItemGroup>
@@ -277,6 +285,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ErrorPage2.xaml.cs">
+      <DependentUpon>ErrorPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ErrorPage.xaml.cs">
       <DependentUpon>ErrorPage.xaml</DependentUpon>
     </Compile>
@@ -291,6 +302,12 @@
     </MauiImage>
     <MauiImage Update="Resources\Images\add_img_white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\arrow_down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\arrow_right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </MauiImage>
     <MauiImage Update="Resources\Images\check_empty.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -308,6 +325,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </MauiImage>
     <MauiImage Update="Resources\Images\exemplo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </MauiImage>
+    <MauiImage Update="Resources\Images\no_internet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </MauiImage>
     <MauiImage Update="Resources\Images\smart_veredict.png">
@@ -328,6 +348,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\ErrorPage2.xaml">
+      <Generator></Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\ErrorPage.xaml">
       <Generator></Generator>
     </MauiXaml>

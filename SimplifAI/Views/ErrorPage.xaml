@@ -6,8 +6,15 @@
     BackgroundColor="#66FEFEFE">
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            
+        
+
+
+        <StackLayout x:Name="telaErro" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped"
+                              NumberOfTapsRequired="1" />
+            </StackLayout.GestureRecognizers>
+            <Image x:Name="imagemErro" />
             <Label Style="{StaticResource LabelBold}"  x:Name="textoErro" HorizontalOptions="Center" VerticalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>

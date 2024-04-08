@@ -1,8 +1,4 @@
-﻿using SimplifAI.Models;
-using SimplifAI.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace SimplifAI.ViewModels

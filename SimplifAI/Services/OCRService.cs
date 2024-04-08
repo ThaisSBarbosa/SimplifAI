@@ -6,7 +6,7 @@ namespace SimplifAI.Services
 {
     public static class OCRService
     {
-        public static string LeImagem(string pathImagem)
+        public static string LeDocumento(string caminho)
         {
             var configuracao = Helper.GetConfiguracoes();
             string key = configuracao["OCR_API_KEY"];
@@ -15,9 +15,9 @@ namespace SimplifAI.Services
             AzureKeyCredential credential = new AzureKeyCredential(key);
             DocumentAnalysisClient client = new DocumentAnalysisClient(new Uri(endpoint), credential);
 
-            //Stream imageStream = Helper.RetornaStreamRecursoIncorporado("Resources.Images.exemplo.png");
-            Stream imageStream = Helper.RetornaStreamFoto(pathImagem);
-            AnalyzeDocumentOperation operation = client.AnalyzeDocument(WaitUntil.Completed, "prebuilt-layout", imageStream);
+            //Stream arquivoStream = Helper.RetornaStreamRecursoIncorporado("Resources.Images.exemplo.png");
+            Stream arquivoStream = FileHelper.RetornaStreamArquivo(caminho);
+            AnalyzeDocumentOperation operation = client.AnalyzeDocument(WaitUntil.Completed, "prebuilt-layout", arquivoStream);
             
             return operation.Value.Content;
         }

@@ -35,9 +35,12 @@ namespace SimplifAI.Services
             string resultado = string.Empty;
 
             if (response != null)
-            {                
-                foreach (var choice in response.Choices)
-                    resultado += "\n" + choice.Message.Content;
+            {
+                resultado = response.Choices[0].Message.Content;
+                for (int i = 1; i<response.Choices.Count; i++)
+                    resultado += "\n" + response.Choices[i].Message.Content ;
+                
+                    
             }
 
             //IOpenAIProxy chatOpenAI = new OpenAIProxy(

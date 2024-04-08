@@ -1,16 +1,15 @@
 ﻿using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimplifAI.Utils
 {
     internal static class ImageHelper
     {
-        public static async Task<byte[]> ConvertAndCompressImage(Stream stream)
+        /// <summary>
+        /// Recebe Stream do arquivo, comprime a imagem e retorna em bytes[]
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static async Task<byte[]> RetornoEmBytes(Stream stream)
         {
             byte[] imageData;
 
@@ -20,7 +19,7 @@ namespace SimplifAI.Utils
                 imageData = ms.ToArray();
             }
 
-            var imagemMenor = await CompressImage(imageData);
+            var imagemMenor = await ComprimeImagem(imageData);
 
             using (var ms = new MemoryStream())
             {
@@ -29,14 +28,14 @@ namespace SimplifAI.Utils
             }            
         }
 
-        public static async Task<Stream> CompressImage(byte[] originalStream)
+        public static async Task<Stream> ComprimeImagem(byte[] originalStream)
         {
             try
             {
                 // Carregar a imagem original
                 using (var originalBitmap = SKBitmap.Decode(originalStream))
                 {
-                    var originalBitmapRotated = Rotate(originalStream);
+                    var originalBitmapRotated = RotacionaImagem(originalStream);
                     var width = originalBitmapRotated.Width;
                     var height = originalBitmapRotated.Height;
 
@@ -58,7 +57,7 @@ namespace SimplifAI.Utils
             }
         }
 
-        private static SKBitmap Rotate(byte[] photo)
+        private static SKBitmap RotacionaImagem(byte[] photo)
         {
             using (var bitmap = SKBitmap.Decode(photo))
             {

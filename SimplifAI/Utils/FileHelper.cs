@@ -1,15 +1,8 @@
-﻿using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace SimplifAI.Utils
 {
     internal static class FileHelper
     {
-
         public static string CriaDirTemp()
         {
             // Cria o diretório temporário
@@ -61,6 +54,15 @@ namespace SimplifAI.Utils
                 await stream2.CopyToAsync(newStream);                
             }
             return nomeArquivoComCaminho;
+        }
+
+        public static Stream RetornaStreamArquivo(string caminho)
+        {
+            if (!File.Exists(caminho))
+            {
+                throw new FileNotFoundException("O arquivo de foto não foi encontrado.", caminho);
+            }
+            return File.OpenRead(caminho);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace SimplifAI.Utils
             int nroPalavras = CalculaNroPalavras(texto);
             int nroFrases = CalculaNroFrases(texto);
 
-            double ARI = (4.6 * (nroLetras / (double)nroPalavras)) + (0.44 * (nroPalavras / (double)nroFrases)) - 20;
+            double ARI = (0.44 * (nroPalavras / (double)nroFrases)) + (4.6 * (nroLetras / (double)nroPalavras)) - 20;
 
             return ARI;
         }
