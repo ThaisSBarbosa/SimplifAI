@@ -31,8 +31,11 @@ namespace SimplifAI.ViewModels
             {
                 listaAquivos = value;
                 OnPropertyChanged(nameof(ListaAquivos));
+                OnPropertyChanged(nameof(IsBotaoVisivel));
+
             }
         }
+        public bool IsBotaoVisivel => ListaAquivos?.Count < 2;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

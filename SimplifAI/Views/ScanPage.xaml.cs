@@ -2,6 +2,7 @@
 using SimplifAI.ViewModels;
 using SimplifAI.Models;
 using SimplifAI.Utils;
+using System.Collections.ObjectModel;
 
 
 namespace SimplifAI.Views
@@ -58,9 +59,11 @@ namespace SimplifAI.Views
             }
 
         }
-        private void simplifAI()
+        private async void simplifAI()
         {
-            _resultado.TextoSimpliicado = GPTService.EnviaTexto(_resultado.TextoOriginal);
+            await Neo4jService.RealizarConsulta();
+            var textoCompleto = _resultado.TextoOriginal + PromptHelper.retornaPrompt();
+            _resultado.TextoSimpliicado = GPTService.EnviaTexto(textoCompleto);
             _resultado.MetricaGeral = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
         }
 
