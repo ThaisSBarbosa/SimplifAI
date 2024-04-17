@@ -2,7 +2,6 @@
 using SimplifAI.ViewModels;
 using SimplifAI.Models;
 using SimplifAI.Utils;
-using System.Collections.ObjectModel;
 
 
 namespace SimplifAI.Views
@@ -19,6 +18,9 @@ namespace SimplifAI.Views
             InitializeComponent();
             this._scanViewModel = new ScanViewModel();
             BindingContext = _scanViewModel;
+
+            //SimplifAI();
+
         }
 
         private async void BtnSimplifAI_Clicked(object sender, EventArgs e)
@@ -40,15 +42,16 @@ namespace SimplifAI.Views
                
                 //Loading();
                 testeOCR();
-                simplifAI();
+                SimplifAI();
                 await Navigation.PopModalAsync();
                 //Loading();
                 await Navigation.PushAsync(new ViewModels.TextoSimplificado());
-            } else
+            } 
+            else
             {
-                 await DisplayAlert("Erro","Não há fotos na lista!","Ok");            }
+                 await DisplayAlert("Erro","Não há fotos na lista!","Ok");            
+            }
         }
-
 
         private void testeOCR()
         {
@@ -59,13 +62,20 @@ namespace SimplifAI.Views
             }
 
         }
-        private async void simplifAI()
+
+        private async void SimplifAI()
         {
-            await Neo4jService.RealizarConsulta();
-            var textoCompleto = _resultado.TextoOriginal + PromptHelper.retornaPrompt();
-            _resultado.TextoSimpliicado = GPTService.EnviaTexto(textoCompleto);
+            //_resultado.TextoOriginal = "\r\nNa esfera jurídica, a arrematação é o ato pelo qual um bem é adjudicado a um terceiro " +
+            //    "mediante leilão judicial, em decorrência de uma execução fiscal. Ao arrazoar sobre o processo, o advogado " +
+            //    "utiliza sua argumentação para defender os interesses do cliente perante o juízo. Posteriormente, o advogado " +
+            //    "pode ajuizar uma ação com vistas a salvaguardar os direitos do cliente, seguindo os trâmites processuais cabíveis " +
+            //    "conforme o ordenamento jurídico vigente.";
+
+            var termosDefinicoes = await Neo4jService.RetornaTermosDefinicoes();            
+            _resultado.TextoProcessado = ProcessamentoTextoService.AdicionaDefinicoesNeo4j(_resultado.TextoOriginal, termosDefinicoes);
+            var textoCompleto = _resultado.TextoProcessado + PromptHelper.retornaPrompt();
+            _resultado.TextoSimplificado = GPTService.EnviaTexto(textoCompleto);
             _resultado.MetricaGeral = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
         }
-
     }
 }

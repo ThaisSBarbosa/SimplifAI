@@ -65,7 +65,7 @@ namespace SimplifAI.ViewModels
 		{
             Title = "Texto simplificado";
 			TextoOriginal = _resultado.TextoOriginal;
-            TextoSimplificado = _resultado.TextoSimpliicado;
+            TextoSimplificado = _resultado.TextoSimplificado;
             MetricaGeral = _resultado.MetricaGeral;
         }
 

@@ -11,6 +11,7 @@ namespace SimplifAI.Models
         private static readonly object _lock = new object();
 
         private string _textoOriginal;
+        private string _textoProcessado;
         private string _textoSimpliicado;
         private double _metricaFK;
         private double _metricaGF;
@@ -19,7 +20,8 @@ namespace SimplifAI.Models
         private double _metricaGeral;
 
         public string TextoOriginal { get { return _textoOriginal; } set { _textoOriginal = value; } }
-        public string TextoSimpliicado { get { return _textoSimpliicado; } set { _textoSimpliicado = value; } }
+        public string TextoProcessado { get { return _textoProcessado; } set { _textoProcessado = value; } }
+        public string TextoSimplificado { get { return _textoSimpliicado; } set { _textoSimpliicado = value; } }
         public double MetricaGeral { get { return _metricaGeral; } set { _metricaGeral = value; } }
 
         public static Resultado GetInstance()
