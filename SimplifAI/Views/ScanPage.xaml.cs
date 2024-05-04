@@ -18,7 +18,7 @@ namespace SimplifAI.Views
             InitializeComponent();
             this._scanViewModel = new ScanViewModel();
             BindingContext = _scanViewModel;
-
+            //testeOCR();
             //SimplifAI();
 
         }
