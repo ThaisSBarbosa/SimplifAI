@@ -112,6 +112,7 @@
 	  <None Remove="Resources\Images\add_purple.png" />
 	  <None Remove="Resources\Images\arrow_down.png" />
 	  <None Remove="Resources\Images\arrow_right.png" />
+	  <None Remove="Resources\Images\bg.png" />
 	  <None Remove="Resources\Images\check_empty.png" />
 	  <None Remove="Resources\Images\check_filled.png" />
 	  <None Remove="Resources\Images\edit_img.png" />

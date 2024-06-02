@@ -116,7 +116,7 @@
     <Style TargetType="DatePicker">
         <Setter Property="TextColor" Value="{StaticResource ColorTextNormal}" />
         <Setter Property="BackgroundColor" Value="{StaticResource BgLogo}" />
-        <Setter Property="FontFamily" Value="Font_Montserrat-Light" />
+        <Setter Property="FontFamily" Value="Font_Montserrat-Bold" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="MinimumHeightRequest" Value="44" />
         <Setter Property="MinimumWidthRequest" Value="44" />
@@ -160,7 +160,7 @@
     <Style TargetType="Entry">
         <Setter Property="TextColor" Value="{StaticResource ColorTextNormal}" />
         <Setter Property="BackgroundColor" Value="{StaticResource BgLogo}" />
-        <Setter Property="FontFamily" Value="Font_Montserrat-Light" />
+        <Setter Property="FontFamily" Value="Font_Montserrat-Bold" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="VisualStateManager.VisualStateGroups">

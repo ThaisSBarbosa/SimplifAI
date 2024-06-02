@@ -14,10 +14,17 @@
         <ResourceDictionary />
     </ContentPage.Resources>
     <StackLayout>
+        <Grid >
 
+        <Image Source="bg.png"
+               Aspect="AspectFill"
+               Opacity="0.6" 
+               Grid.RowSpan="3" 
+               Grid.ColumnSpan="1" />
+        
         <VerticalStackLayout>
             <StackLayout
-                BackgroundColor="#F6F3ED"
+                BackgroundColor="Transparent"
                 HorizontalOptions="Fill"
                 VerticalOptions="FillAndExpand">
                 <StackLayout
@@ -26,7 +33,7 @@
                     VerticalOptions="Center">
                     <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
                         <Image
-                            HeightRequest="120"
+                            HeightRequest="90"
                             Source="smart_veredict.png"
                             VerticalOptions="Center" />
                     </ContentView>
@@ -34,39 +41,23 @@
             </StackLayout>
 
             <StackLayout
-                    Padding="30,10,0,30"
-                    Orientation="Vertical"
-                    Spacing="10">
-                <Label
-                        FontSize="Title"
-                        Style="{StaticResource LabelDestaque}"
-                        Text="SMART VEREDICT" />
-                <Label
-                        Padding="0,0,0,0"
-                        FontSize="16"
-                        Text="Algum texto interessante que explique o que a gente faz." />
-                <Label
-                        Padding="0,0,0,0"
-                        FontSize="16"
-                        Text="Blah, Blah, Blah, Blah, Blah, Blah" />
-            </StackLayout>
-
-            <StackLayout
-                    Padding="30,10,0,30"
+                    Padding="30,10,30,30"
                     Orientation="Vertical"
                     Spacing="10">
                 <Label
                         FontSize="Title"
                         Style="{StaticResource LabelDestaque}"
                         Text="O OBJETIVO" />
-                <Label
+
+                <Label 
                         Padding="0,0,0,0"
                         FontSize="16"
-                        Text="Fazer a gente ficar doida" />
+                        Text="Promover acessibilidade à informação jurídica através de um aplicativo que utiliza Visão Computacional e Inteligência Artificial Generativa para simplificar contratos jurídicos." />
+             
             </StackLayout>
 
             <StackLayout
-                    Padding="30,10,0,30"
+                    Padding="30,10,30,30"
                     Orientation="Vertical"
                     Spacing="10">
                 <Label
@@ -76,7 +67,9 @@
                 <Label
                         Padding="0,0,0,0"
                         FontSize="16"
-                        Text="Três malucas." />
+                        Text="O time é composto pela Jessica Prado Costa, Fabia Dota Carvalho e Thais Santos Barbosa. O time trabalha junto há cinco anos e sempre funcionou bem ;)
+                    " />
+                
             </StackLayout>
 
 
@@ -98,7 +91,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        
 
+        </Grid>
     </StackLayout>
 </ContentPage>
