@@ -18,11 +18,15 @@ namespace SimplifAI.Models
         private double _metricaARI;
         private double _metricaCL;
         private double _metricaGeral;
+        private double _metricaTextoOriginal;
+        private double _metricaTextoSimplificado;
 
         public string TextoOriginal { get { return _textoOriginal; } set { _textoOriginal = value; } }
         public string TextoProcessado { get { return _textoProcessado; } set { _textoProcessado = value; } }
         public string TextoSimplificado { get { return _textoSimpliicado; } set { _textoSimpliicado = value; } }
         public double MetricaGeral { get { return _metricaGeral; } set { _metricaGeral = value; } }
+        public double MetricaTextoOriginal { get { return _metricaTextoOriginal;} set { _metricaTextoOriginal = value;} }
+        public double MetricaTextoSimplificado { get { return _metricaTextoSimplificado; } set { _metricaTextoSimplificado = value; } } 
 
         public static Resultado GetInstance()
         {

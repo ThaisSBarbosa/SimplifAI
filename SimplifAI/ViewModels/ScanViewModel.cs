@@ -3,6 +3,7 @@ using SimplifAI.Models;
 using SimplifAI.Utils;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Input;
 
 
@@ -16,7 +17,13 @@ namespace SimplifAI.ViewModels
         {
             //ApagaConteudoPasta();
             listaAquivos = new ObservableCollection<Arquivo>(); ;
+            var a = new Arquivo();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string nomeRecurso = "Resources.Images.tests.teste.png";
+            //a.Caminho = $"{assembly.GetName().Name}.{nomeRecurso}";
+            a.Caminho = "teste.png";
 
+            listaAquivos.Add(a);
             Title = "Leitura";
             ExcluirItemCommand = new Command<Arquivo>(ExcluirArquivo);
             ModoSelecao = SelectionMode.None;

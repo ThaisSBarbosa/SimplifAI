@@ -61,12 +61,48 @@ namespace SimplifAI.ViewModels
             }
         }
 
+        private double _metricaTextoSimplificado;
+
+        public double MetricaTextoSimplificado
+        {
+            get => _metricaTextoSimplificado;
+
+            set
+            {
+                if (_metricaTextoSimplificado != value)
+                {
+                    _metricaTextoSimplificado = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+        private double _metricaTextoOriginal;
+
+        public double MetricaTextoOriginal
+        {
+            get => _metricaTextoOriginal;
+
+            set
+            {
+                if (_metricaTextoOriginal != value)
+                {
+                    _metricaTextoOriginal = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         public TextoSimplificadoViewModel ()
 		{
             Title = "Texto simplificado";
 			TextoOriginal = _resultado.TextoOriginal;
             TextoSimplificado = _resultado.TextoSimplificado;
             MetricaGeral = _resultado.MetricaGeral;
+            MetricaTextoOriginal = _resultado.MetricaTextoOriginal;
+            MetricaTextoSimplificado = _resultado.MetricaTextoSimplificado;
         }
 
 

@@ -25,9 +25,9 @@ namespace SimplifAI.Views
 
         private async void BtnSimplifAI_Clicked(object sender, EventArgs e)
         {
-            if (_scanViewModel.ListaAquivos.Count > 0)
+            if (_scanViewModel.ListaAquivos.Count >= 0)
             {
-                if (!ErrorHelper.checkAcessoServicos())
+                /*if (!ErrorHelper.checkAcessoServicos())
                 {
                     //await Navigation.PopModalAsync();
                     //await Navigation.PushModalAsync(new ErrorPage("Sem Internet!", imagemSemInternet));
@@ -38,6 +38,7 @@ namespace SimplifAI.Views
                     //await Navigation.PopModalAsync();
                     return;
                 }
+               */
                 await Navigation.PushModalAsync(new LoadingPage());
                
                 //Loading();
@@ -55,12 +56,21 @@ namespace SimplifAI.Views
 
         private void testeOCR()
         {
+
+
+
             _resultado.TextoOriginal = string.Empty;
+
+            _resultado.TextoOriginal = "Na cláusula de arrematação deste contrato, fica estipulado que, em caso de inadimplemento por parte de uma das partes, o bem em questão será levado a leilão judicial, podendo ser adjudicado a terceiros. O presente instrumento também estabelece que, ao arrazoar sobre qualquer litígio decorrente deste contrato, as partes se comprometem a buscar primeiramente uma solução amigável. No entanto, caso não haja acordo, poderá ser ajuizada ação judicial, visando a resolução do conflito conforme os trâmites processuais cabíveis.";
+
+            return;
+
             foreach (var arquivo in _scanViewModel.ListaAquivos)
             {
                 _resultado.TextoOriginal += OCRService.LeDocumento(arquivo.Caminho);
             }
 
+            
         }
 
         private async void SimplifAI()
@@ -75,7 +85,8 @@ namespace SimplifAI.Views
             _resultado.TextoProcessado = ProcessamentoTextoService.AdicionaDefinicoesNeo4j(_resultado.TextoOriginal, termosDefinicoes);
             var textoCompleto = _resultado.TextoProcessado + PromptHelper.retornaPrompt();
             _resultado.TextoSimplificado = GPTService.EnviaTexto(textoCompleto);
-            _resultado.MetricaGeral = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
+            _resultado.MetricaTextoOriginal = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
+            _resultado.MetricaTextoSimplificado = TextHelper.CalculaMetricaGeral(_resultado.TextoSimplificado);
         }
     }
 }

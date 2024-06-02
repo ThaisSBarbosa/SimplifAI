@@ -62,12 +62,13 @@
                     <StackLayout x:Name="TextoOriginal" Style="{StaticResource ExpandView}" IsVisible="False" Grid.Row="1" Grid.ColumnSpan="2">
                         <Label Text="{Binding TextoOriginal}" />
                     </StackLayout>
+                    
                 </Grid>
 
 
-                <Label Style="{StaticResource LabelBold}" Text="Métricas:" />
+                <Label Style="{StaticResource LabelBold}" Text="Métricas texto original:" />
                 <StackLayout Orientation="Horizontal" Margin="5,5,5,5">
-                    <ProgressBar Progress="{Binding MetricaGeral}"
+                    <ProgressBar Progress="{Binding MetricaTextoOriginal}"
                                HeightRequest="15"
                                WidthRequest="250"
                                ProgressColor="{StaticResource Main}"
@@ -75,11 +76,34 @@
                                VerticalOptions="Start" 
                                HorizontalOptions="StartAndExpand"
                                />
-                    <Label Style="{StaticResource LabelBold}" Text="{Binding MetricaGeral, StringFormat='{0:P0}'}" />
+                    <Label Style="{StaticResource LabelBold}" Text="{Binding MetricaTextoOriginal}" />
                 </StackLayout>
-                
-                
 
+                <Label Style="{StaticResource LabelBold}" Text="Métrica Texto Simplificado:" />
+                <StackLayout Orientation="Horizontal" Margin="5,5,5,5" >
+                    <ProgressBar Progress="{Binding MetricaTextoSimplificado}"
+            HeightRequest="15"
+            WidthRequest="250"
+            ProgressColor="{StaticResource Main}"
+            BackgroundColor="{StaticResource BgLogo}"
+            VerticalOptions="Start" 
+            HorizontalOptions="StartAndExpand" 
+            />
+                    <Label Style="{StaticResource LabelBold}" Text="{Binding MetricaTextoSimplificado}" />
+                </StackLayout>
+
+                <Label Style="{StaticResource LabelBold}" Text="Métrica Texto Original:" IsVisible="False"/>
+                <StackLayout Orientation="Horizontal" Margin="5,5,5,5" IsVisible="False">
+                    <ProgressBar Progress="{Binding MetricaTextoOriginal}"
+            HeightRequest="15"
+            WidthRequest="250"
+            ProgressColor="{StaticResource Main}"
+            BackgroundColor="{StaticResource BgLogo}"
+            VerticalOptions="Start" 
+            HorizontalOptions="StartAndExpand" 
+            IsVisible="False"/>
+                    <Label Style="{StaticResource LabelBold}" Text="{Binding MetricaTextoOriginal, StringFormat='{0:P0}'}" IsVisible="False" />
+                </StackLayout>
 
                 <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Center">
                     <Label Style="{StaticResource LabelDestaque}" FontSize="Title" Text="Avalie-nos:" HorizontalOptions="Center">
@@ -87,11 +111,11 @@
 
                     <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
 
-                        <ImageButton x:Name="btnStar01" Style="{StaticResource IB_Star}" Source="star_thin_empty.png" />
-                        <ImageButton x:Name="btnStar02" Style="{StaticResource IB_Star}" Source="star_thin_empty.png" />
-                        <ImageButton x:Name="btnStar03" Style="{StaticResource IB_Star}" Source="star_thin_empty.png" />
-                        <ImageButton x:Name="btnStar04" Style="{StaticResource IB_Star}" Source="star_thin_empty.png" />
-                        <ImageButton x:Name="btnStar05" Style="{StaticResource IB_Star}" Source="star_thin_empty.png" />
+                        <ImageButton x:Name="btnStar01" Style="{StaticResource IB_Star}" Source="star_filled.png" />
+                        <ImageButton x:Name="btnStar02" Style="{StaticResource IB_Star}" Source="star_filled.png" />
+                        <ImageButton x:Name="btnStar03" Style="{StaticResource IB_Star}" Source="star_filled.png" />
+                        <ImageButton x:Name="btnStar04" Style="{StaticResource IB_Star}" Source="star_filled.png" />
+                        <ImageButton x:Name="btnStar05" Style="{StaticResource IB_Star}" Source="star_filled.png" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

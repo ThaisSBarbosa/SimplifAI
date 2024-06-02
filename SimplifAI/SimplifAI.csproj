@@ -50,11 +50,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#AD9CD8" />
 		<MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#C3AA9E" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#AD9CD8" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -109,12 +109,14 @@
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\Images\add_purple.png" />
 	  <None Remove="Resources\Images\arrow_down.png" />
 	  <None Remove="Resources\Images\arrow_right.png" />
 	  <None Remove="Resources\Images\check_empty.png" />
 	  <None Remove="Resources\Images\check_filled.png" />
 	  <None Remove="Resources\Images\edit_img.png" />
 	  <None Remove="Resources\Images\edit_img_edit.png" />
+	  <None Remove="Resources\Images\erase.png" />
 	  <None Remove="Resources\Images\erase_img.png" />
 	  <None Remove="Resources\Images\erase_img_edit.png" />
 

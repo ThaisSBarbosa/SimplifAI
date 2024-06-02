@@ -55,7 +55,7 @@ namespace SimplifAI.Utils
             int nroPalavras = CalculaNroPalavras(texto);
             int nroFrases = CalculaNroFrases(texto);
 
-            double ARI = (0.44 * (nroPalavras / (double)nroFrases)) + (4.6 * (nroLetras / (double)nroPalavras)) - 20;
+            double ARI = (0.44 * (nroPalavras / (double)nroFrases)) + ((4.6 * (nroLetras / (double)nroPalavras))) - 20;
 
             return ARI;
         }
@@ -73,8 +73,21 @@ namespace SimplifAI.Utils
 
         public static double CalculaMetricaGeral(string texto)
         {
-            return ((CalculaMetricaARI(texto) + CalculaMetricaCL(texto)) / 2)/100;
+            return ((CalculaMetricaARI(texto) + CalculaMetricaCL(texto)) / 2);
 
+        }
+
+        public static string RetiraTextosExtras(string texto)
+        {
+            string[] stringsParaExcluir = [ ":unselected:", ":selected:"];
+
+            foreach (string s in stringsParaExcluir)
+            {
+
+                //while (texto.IndexOf(s)>=0)    
+                  //  texto = texto.Remove(texto.IndexOf(s),s.Length);
+            }
+            return texto;
         }
     }
 }
