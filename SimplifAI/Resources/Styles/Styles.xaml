@@ -65,7 +65,7 @@
 
     <Style x:Key="ButtonAddFile" TargetType="Button">
         <Setter Property="TextColor" Value="{StaticResource Main}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="Font_Montserrat-ExtraBold" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="BorderWidth" Value="0" />
@@ -80,7 +80,7 @@
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal">
                         <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{StaticResource BgTela}" />
+                            <Setter Property="BackgroundColor" Value="Transparent" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="Disabled">
