@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FFImageLoading.Maui;
+using Microsoft.Extensions.Logging;
 
 [assembly: ExportFont("WatermelonSugar.ttf", Alias = "Font_WatermelonSugar")]
 [assembly: ExportFont("Montserrat-Black.ttf", Alias = "Font_Montserrat-Black")]
@@ -30,6 +31,7 @@ namespace SimplifAI
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseFFImageLoading()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

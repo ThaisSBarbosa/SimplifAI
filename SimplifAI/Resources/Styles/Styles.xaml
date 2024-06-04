@@ -7,7 +7,7 @@
     <Color x:Key="BgLogo">#AD9CD8</Color>
     <Color x:Key="ColorTextNormal">#595959</Color>
     <Color x:Key="ColorHighLight">#2E2252</Color>
-    <Color x:Key="FncDisabled">#E8E8E8</Color>
+    <Color x:Key="FncDisabled">#AD9CD8</Color>
     <Color x:Key="FncEnabled">#7E63C8</Color>
 
     <Style TargetType="ActivityIndicator">
@@ -50,11 +50,13 @@
                     <VisualState x:Name="Normal">
                         <VisualState.Setters>
                             <Setter Property="BackgroundColor" Value="{StaticResource FncEnabled}" />
+                            <Setter Property="TextColor" Value="White" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{StaticResource FncDisabled}" />
+                            <Setter Property="BackgroundColor" Value="{StaticResource ColorTextNormal}" />
+                            <Setter Property="TextColor" Value="#e8e8e8" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver" />

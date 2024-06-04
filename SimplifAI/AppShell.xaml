@@ -42,10 +42,10 @@
             ContentTemplate="{DataTemplate local:AboutPage}"
             Icon="icon_about.png"
             Route="AboutPage" />
-        <!--<ShellContent 
+       <ShellContent 
             Title="Teste"
-            ContentTemplate="{DataTemplate local:LoginPage}" 
-            Route="LoginPage" /> -->
+            ContentTemplate="{DataTemplate local:StartPage}" 
+            Route="StartPage" />
     </TabBar>
 
     <!--<ShellContent

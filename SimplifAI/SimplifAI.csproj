@@ -46,6 +46,19 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 	  <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
+	  <Optimize>False</Optimize>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -109,6 +122,9 @@
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-SemiBoldItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\static\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\Images\gifs\end.gif" />
+	  <None Remove="Resources\Images\gifs\middle.gif" />
+	  <None Remove="Resources\Images\gifs\start.gif" />
 	  <None Remove="Resources\Images\add_purple.png" />
 	  <None Remove="Resources\Images\arrow_down.png" />
 	  <None Remove="Resources\Images\arrow_right.png" />
@@ -125,6 +141,7 @@
 
 	  <None Remove="Resources\Images\add_img.png" />
 	  <None Remove="Resources\Images\add_img_white.png" />
+	  <None Remove="Resources\Images\gifs\start2.gif" />
 	  <None Remove="Resources\Images\no_internet.png" />
 	  <None Remove="Resources\Images\smart_veredict.png" />
 	  <None Remove="Resources\Images\star_empty.png" />
@@ -250,6 +267,7 @@
 		<PackageReference Include="Azure.AI.FormRecognizer" Version="4.1.0" />
 		<PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.2.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -271,6 +289,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\gifs\end.gif">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\gifs\middle.gif">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\gifs\start.gif">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\gifs\start2.gif">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiFont Update="Resources\Fonts\OpenSans-Regular.ttf">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiFont>
@@ -286,6 +319,9 @@
 	  <None Update="Resources\xml\file_paths.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="Views\StartPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
 	</ItemGroup>
 
   <ItemGroup>
@@ -293,6 +329,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ErrorPage2.xaml.cs">
       <DependentUpon>ErrorPage2.xaml</DependentUpon>
     </Compile>
@@ -353,6 +392,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\StartPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\ErrorPage2.xaml">
       <Generator></Generator>
     </MauiXaml>

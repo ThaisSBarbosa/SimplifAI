@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SimplifAI.Views.StartPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:SimplifAI.ViewModels"
+    Title="{Binding Title}"
+    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="GifTemplate">
+                <StackLayout>
+                    <ff:CachedImage 
+                    Source="{Binding}"
+                    Aspect="AspectFill"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    LoadingPriority="High"/>
+
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto,Auto,Auto,*" >
+        <CarouselView x:Name="carousel"
+                      ItemTemplate="{StaticResource GifTemplate}"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      PositionChanged="OnCarouselViewPositionChanged"
+                      Loop="False"
+                      Grid.Row="0">
+
+        </CarouselView>
+        <IndicatorView 
+                x:Name="indicatorView"
+                IndicatorsShape="Square" 
+                IndicatorColor="Gray" 
+                SelectedIndicatorColor="{StaticResource Main}" 
+                IndicatorSize="10" 
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="0,0,0,0"
+                Grid.Row="4"/>
+        <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="0,0,0,00" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <CheckBox 
+                 x:Name="AceiteTermos" 
+                 IsChecked="{Binding Aceitou}" 
+                 IsVisible="False"
+               Color="{StaticResource Main}"/>
+            <Label 
+                   x:Name="LblAceiteTermos"
+                   Style="{StaticResource LabelBold}"
+                   LineBreakMode="WordWrap"
+                   IsVisible="False"
+                   Text="Concordo com os Termos e Condições" FontSize="20"/>
+  
+        </StackLayout>
+        <Border 
+            Style="{StaticResource BorderShadow}" 
+            VerticalOptions="EndAndExpand" 
+            Padding="20"
+            Grid.Row="3">
+            <Border.Shadow>
+                <Shadow Offset="10,10" Radius="20" Opacity="0.4" />
+            </Border.Shadow>
+            <Button
+    x:Name="LoginButton"
+    Clicked="OnLoginButtonClicked"
+    HeightRequest="50"
+                IsEnabled="False"
+    Text="Entrar" />
+        </Border>
+    </Grid>
+</ContentPage>

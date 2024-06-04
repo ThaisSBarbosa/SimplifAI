@@ -69,7 +69,7 @@
                             StrokeThickness="4"
                             StrokeShape="RoundRectangle 10,10,10,10"
                             StrokeDashArray="2,1"
-                            Background="{StaticResource BgTela}"
+                            Background="Transparent"
                             Padding="8,8,8,8"
                             Margin="10,10,10,10" 
                             VerticalOptions="Start"
