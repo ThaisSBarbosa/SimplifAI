@@ -39,38 +39,38 @@ namespace SimplifAI.Views
                     return;
                 }
                */
-                await Navigation.PushModalAsync(new LoadingPage());
-               
+
                 //Loading();
-                testeOCR();
+                await Navigation.PushModalAsync(new LoadingPage());
+
+                LeDocumento();
+
                 SimplifAI();
                 await Navigation.PopModalAsync();
                 //Loading();
                 await Navigation.PushAsync(new ViewModels.TextoSimplificado());
-            } 
+            }
             else
             {
-                 await DisplayAlert("Erro","Não há fotos na lista!","Ok");            
+                await DisplayAlert("Erro", "Capture uma foto!", "Ok");
             }
         }
 
-        private void testeOCR()
+        private void LeDocumento()
         {
-
-
-
-            _resultado.TextoOriginal = string.Empty;
-
-            _resultado.TextoOriginal = "Na cláusula de arrematação deste contrato, fica estipulado que, em caso de inadimplemento por parte de uma das partes, o bem em questão será levado a leilão judicial, podendo ser adjudicado a terceiros. O presente instrumento também estabelece que, ao arrazoar sobre qualquer litígio decorrente deste contrato, as partes se comprometem a buscar primeiramente uma solução amigável. No entanto, caso não haja acordo, poderá ser ajuizada ação judicial, visando a resolução do conflito conforme os trâmites processuais cabíveis.";
-
-            return;
-
-            foreach (var arquivo in _scanViewModel.ListaAquivos)
+            try
             {
-                _resultado.TextoOriginal += OCRService.LeDocumento(arquivo.Caminho);
+                foreach (var arquivo in _scanViewModel.ListaAquivos)
+                {
+                    _resultado.TextoOriginal += OCRService.LeDocumento(arquivo.Caminho);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                DisplayAlert("Erro", "Erro ao ler documento!", "Ok");
             }
 
-            
         }
 
         private async void SimplifAI()
@@ -81,12 +81,22 @@ namespace SimplifAI.Views
             //    "pode ajuizar uma ação com vistas a salvaguardar os direitos do cliente, seguindo os trâmites processuais cabíveis " +
             //    "conforme o ordenamento jurídico vigente.";
 
-            var termosDefinicoes = await Neo4jService.RetornaTermosDefinicoes();            
-            _resultado.TextoProcessado = ProcessamentoTextoService.AdicionaDefinicoesNeo4j(_resultado.TextoOriginal, termosDefinicoes);
-            var textoCompleto = _resultado.TextoProcessado + PromptHelper.retornaPrompt();
-            _resultado.TextoSimplificado = GPTService.EnviaTexto(textoCompleto);
-            _resultado.MetricaTextoOriginal = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
-            _resultado.MetricaTextoSimplificado = TextHelper.CalculaMetricaGeral(_resultado.TextoSimplificado);
+            try
+            {
+                var termosDefinicoes = await Neo4jService.RetornaTermosDefinicoes();
+                _resultado.TextoProcessado = ProcessamentoTextoService.AdicionaDefinicoesNeo4j(_resultado.TextoOriginal, termosDefinicoes);
+
+                var textoCompleto = _resultado.TextoProcessado + PromptHelper.retornaPrompt();
+                _resultado.TextoSimplificado = GPTService.EnviaTexto(textoCompleto);
+
+                _resultado.MetricaTextoOriginal = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
+                _resultado.MetricaTextoSimplificado = TextHelper.CalculaMetricaGeral(_resultado.TextoSimplificado);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                await DisplayAlert("Erro", "Erro ao simplificar documento!", "Ok");
+            }
         }
     }
 }

@@ -17,13 +17,13 @@ namespace SimplifAI.ViewModels
         {
             //ApagaConteudoPasta();
             listaAquivos = new ObservableCollection<Arquivo>(); ;
-            var a = new Arquivo();
+            //var a = new Arquivo();
             Assembly assembly = Assembly.GetExecutingAssembly();
-            string nomeRecurso = "Resources.Images.tests.teste.png";
+            //string nomeRecurso = "Resources.Images.tests.teste.png";
             //a.Caminho = $"{assembly.GetName().Name}.{nomeRecurso}";
-            a.Caminho = "teste.png";
+           // a.Caminho = "teste.png";
 
-            listaAquivos.Add(a);
+            //listaAquivos.Add(a);
             Title = "Leitura";
             ExcluirItemCommand = new Command<Arquivo>(ExcluirArquivo);
             ModoSelecao = SelectionMode.None;
