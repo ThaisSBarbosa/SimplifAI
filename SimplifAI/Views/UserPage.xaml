@@ -43,11 +43,11 @@
                         FontSize="Title"
                         HorizontalOptions="Center"
                         Style="{StaticResource LabelDestaque}"
-                        Text="Olá, Fulano!" />
+                        Text="Olá, seja bem-vindo(a)!" />
                 <Button 
-                    x:Name="BTN_Login" 
-                    Text="Login" 
-                    Clicked="BTN_Login_Clicked"></Button>
+                    x:Name="BTN_PrimeiroAcesso" 
+                    Text="Primeiro Acesso" 
+                    Clicked="BTN_PrimeiroAcesso_Clicked"></Button>
             </StackLayout>
 
 
@@ -63,24 +63,24 @@
                     HorizontalOptions="FillAndExpand"
                     Keyboard="Text"
                     Placeholder="Digite seu nome"
-                    Text="Fulano" />
+                    Text="" />
             </StackLayout>
 
             <StackLayout
                 Orientation="Horizontal">
                 <Label
                     Style="{StaticResource LabelBold}"
-                    Text="Sobrenome: "
+                    Text="Senha: "
                     VerticalOptions="CenterAndExpand" />
                 <Entry
-                    x:Name="TxtUserLastName"
+                    x:Name="TxtSenha"
                     HorizontalOptions="FillAndExpand"
                     Keyboard="Text"
-                    Placeholder="Digite seu nome"
-                    Text="De Tal" />
+                    Placeholder="Digite a senha"
+                    Text="" />
             </StackLayout>
 
-            <StackLayout
+            <!--<StackLayout
                     Orientation="Horizontal">
                 <Label
                     Style="{StaticResource LabelBold}"
@@ -89,7 +89,7 @@
                 <DatePicker
                     x:Name="DtPcUserBirthDate" 
                     HorizontalOptions="FillAndExpand" />
-            </StackLayout>
+            </StackLayout>-->
 
         </VerticalStackLayout>
         
@@ -97,9 +97,9 @@
         <StackLayout
             VerticalOptions="EndAndExpand">
             <Button
-                x:Name="BtnSalvar"
-                Clicked="BtnSalvar_Clicked"
-                Text="Salvar" />
+                x:Name="BtnEntrar"
+                Clicked="BtnEntrar_Clicked"
+                Text="Entrar" />
         </StackLayout>
 
     </StackLayout>

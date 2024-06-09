@@ -48,10 +48,10 @@
                 x:Name="TxtUserName"
                 HorizontalOptions="FillAndExpand"
                 Keyboard="Text"
-                Placeholder="Digite seu nome"
+                Placeholder="Digite um nome de usuário"
                 Text="Fulano" />
         </StackLayout>
-        <StackLayout
+        <!--<StackLayout
             Orientation="Horizontal"
             VerticalOptions="CenterAndExpand">
             <Label
@@ -104,7 +104,7 @@
                 Keyboard="Email"
                 Placeholder="nome@mail"
                 Text="fabia@simplifai.com" />
-        </StackLayout>
+        </StackLayout>-->
 
             <StackLayout
                 Orientation="Horizontal">
@@ -116,12 +116,12 @@
                     x:Name="TxtUserPass"
                     HorizontalOptions="FillAndExpand"
                     Keyboard="Default"                    
-                    Placeholder="Digite a senha"
+                    Placeholder="Digite uma senha"
                     IsPassword="True"/>
             </StackLayout>
 
 
-            <StackLayout
+            <!--<StackLayout
                 Orientation="Horizontal">
                 <Label
                     Style="{StaticResource LabelBold}"
@@ -133,7 +133,7 @@
                     Keyboard="Default"
                     Placeholder="Repita a senha"
                     IsPassword="True"/>
-            </StackLayout>
+            </StackLayout>-->
 
             <StackLayout
             Orientation="Horizontal">

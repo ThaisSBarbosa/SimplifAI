@@ -7,7 +7,7 @@ namespace SimplifAI.Utils
 
         public static bool checkAcessoServicos()
         {
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            if (Connectivity.NetworkAccess != Microsoft.Maui.Networking.NetworkAccess.Internet)
                 return false;
             /*var configuracao = Helper.GetConfiguracoes();
             var linkOCR = configuracao["OCR_ENDPOINT"];
