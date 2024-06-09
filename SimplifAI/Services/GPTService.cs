@@ -6,7 +6,7 @@ namespace SimplifAI.Services
 {
     public static class GPTService
     {
-        public static string EnviaTexto(string msg)
+        public async static Task<string> EnviaTexto(string msg)
         {
             var configuracao = Helper.GetConfiguracoes();
             var endpoint = configuracao["GPT_ENDPOINT"];
@@ -14,13 +14,13 @@ namespace SimplifAI.Services
 
             OpenAIClient client = new OpenAIClient(new Uri(endpoint), new AzureKeyCredential(key));
 
-            Response<ChatCompletions> responseWithoutStream = client.GetChatCompletions("deploy-gpt-simplify",
+            Response<ChatCompletions> responseWithoutStream = await client.GetChatCompletionsAsync("deploy-gpt-simplify",
                 new ChatCompletionsOptions()
                 {
                     Messages =
                     {
                         new ChatMessage(ChatRole.System, PromptHelper.retornaMsgSystem()),
-                        new ChatMessage(ChatRole.User, msg + PromptHelper.retornaPrompt()),
+                        new ChatMessage(ChatRole.User, msg),
                         //new ChatMessage(ChatRole.Assistant, @"Microsoft was founded on April 4, 1975."),
                     },
                     Temperature = (float)0.7,

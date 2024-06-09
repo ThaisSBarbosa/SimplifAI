@@ -45,7 +45,7 @@ namespace SimplifAI.Views
 
                 LeDocumento();
 
-                SimplifAI();
+                await SimplifAI();
                 await Navigation.PopModalAsync();
                 //Loading();
                 await Navigation.PushAsync(new ViewModels.TextoSimplificado());
@@ -73,7 +73,7 @@ namespace SimplifAI.Views
 
         }
 
-        private async void SimplifAI()
+        private async Task SimplifAI()
         {
             //_resultado.TextoOriginal = "\r\nNa esfera jurídica, a arrematação é o ato pelo qual um bem é adjudicado a um terceiro " +
             //    "mediante leilão judicial, em decorrência de uma execução fiscal. Ao arrazoar sobre o processo, o advogado " +
@@ -83,11 +83,20 @@ namespace SimplifAI.Views
 
             try
             {
-                var termosDefinicoes = await Neo4jService.RetornaTermosDefinicoes();
-                _resultado.TextoProcessado = ProcessamentoTextoService.AdicionaDefinicoesNeo4j(_resultado.TextoOriginal, termosDefinicoes);
+                if (!_resultado.TextoOriginal.Contains("Termo") && !_resultado.TextoOriginal.Contains("termo") &&
+                    !_resultado.TextoOriginal.Contains("Contrato") && !_resultado.TextoOriginal.Contains("contrato"))
+                {
+                    _resultado.TextoSimplificado = "Desculpe, mas só consigo processar e trabalhar com contratos jurídicos. " +
+                        "Por favor insira fotos de um contrato para iniciar a simplificação.";
+                }
+                else
+                {
+                    var termosDefinicoes = await Neo4jService.RetornaTermosDefinicoes();
+                    _resultado.TextoProcessado = ProcessamentoTextoService.AdicionaDefinicoesNeo4j(_resultado.TextoOriginal, termosDefinicoes);
 
-                var textoCompleto = _resultado.TextoProcessado + PromptHelper.retornaPrompt();
-                _resultado.TextoSimplificado = GPTService.EnviaTexto(textoCompleto);
+                    var textoCompleto = _resultado.TextoProcessado + PromptHelper.retornaPrompt();
+                    _resultado.TextoSimplificado = await GPTService.EnviaTexto(textoCompleto);
+                }
 
                 _resultado.MetricaTextoOriginal = TextHelper.CalculaMetricaGeral(_resultado.TextoOriginal);
                 _resultado.MetricaTextoSimplificado = TextHelper.CalculaMetricaGeral(_resultado.TextoSimplificado);
