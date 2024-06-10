@@ -1,9 +1,12 @@
 ﻿
+using SimplifAI.Models;
+
 namespace SimplifAI.ViewModels
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TextoSimplificado : ContentPage
 	{
+        public Resultado _resultado = Resultado.GetInstance();
         public TextoSimplificado ()
 		{
             InitializeComponent();
@@ -27,5 +30,24 @@ namespace SimplifAI.ViewModels
             else
                 btnExpandSimplificado.Source = "arrow_right.png";
         }
+        protected override void OnDisappearing()
+        {
+            Resultado.LimpaDados();
+            base.OnDisappearing();
+        }
+
+        private void ExpandeIndices(object sender, EventArgs e)
+        {
+            Indices.IsVisible = !Indices.IsVisible;
+            if (Indices.IsVisible == true)
+                btnExpandIndices.Source = "arrow_down.png";
+            else
+                btnExpandIndices.Source = "arrow_right.png";
+        }
+
+        private void btnShowInfo_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+} 

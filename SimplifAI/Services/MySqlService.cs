@@ -10,10 +10,10 @@ namespace SimplifAI.Services
 {
     public static class MySqlService
     {
-        public static void Insere(string nome, string senha)
+        public static int Insere(string nome, string senha)
         {
             var query = "INSERT INTO usuarios (nome, senha) VALUES ('" + nome + "', '" + senha + "')";
-            ExecutaComando(query);
+            return ExecutaComando(query);
         }
 
         public static bool ValidaUsuario(string nome, string senha)
@@ -22,7 +22,7 @@ namespace SimplifAI.Services
             return ExecutaCountMaiorQue1(query);
         }
 
-        public static void ExecutaComando(string query)
+        public static int ExecutaComando(string query)
         {
             var configuracao = Helper.GetConfiguracoes();
             var connectionString = configuracao["MYSQL_STRCONN"];
@@ -41,11 +41,13 @@ namespace SimplifAI.Services
                         // Executa a query
                         int rowsAffected = cmd.ExecuteNonQuery();
                         Console.WriteLine($"Query executada com sucesso! Linhas afetadas: {rowsAffected}");
+                        return rowsAffected;
                     }
                 }
                 catch (MySqlException ex)
                 {
                     Console.WriteLine("Erro: " + ex.Message);
+                    return -1;
                 }
                 finally
                 {

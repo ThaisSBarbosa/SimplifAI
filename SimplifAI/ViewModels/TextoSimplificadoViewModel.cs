@@ -94,7 +94,36 @@ namespace SimplifAI.ViewModels
             }
         }
 
+        private double _pbTextoOriginal;
+        private double _pbTextoSimplificado;
 
+        public double PBTextoOriginal
+        {
+            get => _pbTextoOriginal;
+
+            set
+            {
+                if (_pbTextoOriginal != value)
+                {
+                    _pbTextoOriginal = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public double PBTextoSimplificado
+        {
+            get => _pbTextoSimplificado;
+
+            set
+            {
+                if (_pbTextoSimplificado != value)
+                {
+                    _pbTextoSimplificado = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public TextoSimplificadoViewModel ()
 		{
             Title = "Texto simplificado";
@@ -103,8 +132,23 @@ namespace SimplifAI.ViewModels
             MetricaGeral = _resultado.MetricaGeral;
             MetricaTextoOriginal = _resultado.MetricaTextoOriginal;
             MetricaTextoSimplificado = _resultado.MetricaTextoSimplificado;
+            CalculaPB();
         }
 
+        private void CalculaPB()
+        {
+
+            if (MetricaTextoOriginal > MetricaTextoSimplificado)
+            {
+                PBTextoOriginal = 1;
+                PBTextoSimplificado = (MetricaTextoSimplificado / MetricaTextoOriginal);
+            }
+            else
+            {
+                PBTextoSimplificado = 1;
+                PBTextoOriginal = (PBTextoOriginal / PBTextoSimplificado);
+            }
+        }
 
 
 	}

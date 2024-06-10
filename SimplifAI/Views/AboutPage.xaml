@@ -10,40 +10,36 @@
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.Resources>
-        <ResourceDictionary />
-    </ContentPage.Resources>
-    <StackLayout>
-        <Grid >
+    <ContentPage.Content>
 
-        <Image Source="bg.png"
+        <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+
+            <Image Source="bg.png"
                Aspect="AspectFill"
                Opacity="0.6" 
-               Grid.RowSpan="3" 
-               Grid.ColumnSpan="1" />
-        
-        <VerticalStackLayout>
+               Grid.RowSpan="4" 
+               Grid.ColumnSpan="1" Grid.Row="0"/>
+
             <StackLayout
-                BackgroundColor="Transparent"
-                HorizontalOptions="Fill"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
-                    VerticalOptions="Center">
-                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                        <Image
+                    VerticalOptions="Center"
+                        Grid.Row="0">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image
                             HeightRequest="90"
                             Source="smart_veredict.png"
                             VerticalOptions="Center" />
-                    </ContentView>
-                </StackLayout>
+                </ContentView>
+
             </StackLayout>
 
             <StackLayout
                     Padding="30,10,30,30"
                     Orientation="Vertical"
-                    Spacing="10">
+                    Spacing="10"
+                Grid.Row="1"
+                >
                 <Label
                         FontSize="Title"
                         Style="{StaticResource LabelDestaque}"
@@ -53,45 +49,55 @@
                         Padding="0,0,0,0"
                         FontSize="16"
                         Text="Promover acessibilidade à informação jurídica através de um aplicativo que utiliza Visão Computacional e Inteligência Artificial Generativa para simplificar contratos jurídicos." />
-             
-            </StackLayout>
-
-            <StackLayout
-                    Padding="30,10,30,30"
-                    Orientation="Vertical"
-                    Spacing="10">
                 <Label
-                        FontSize="Title"
-                        Style="{StaticResource LabelDestaque}"
-                        Text="O TIME" />
+            FontSize="Title"
+            Style="{StaticResource LabelDestaque}"
+            Text="O TIME" />
                 <Label
-                        Padding="0,0,0,0"
-                        FontSize="16"
-                        Text="O time é composto pela Jessica Prado Costa, Fabia Dota Carvalho e Thais Santos Barbosa. O time trabalha junto há cinco anos e sempre funcionou bem ;)
-                    " />
+            Padding="0,0,0,0"
+            FontSize="16"
+            Text="O time é composto pela Jessica Prado Costa, Fabia Dota Carvalho e Thais Santos Barbosa. O time trabalha junto há cinco anos e sempre funcionou bem ;)
+        " />
                 
             </StackLayout>
 
 
-        </VerticalStackLayout>
 
-
-        <Label
-    Padding="0,10,0,10"
-    FontSize="16"
-    HorizontalTextAlignment="Center"
-    VerticalOptions="EndAndExpand">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Style="{StaticResource ColorTextNormal}" FontSize="10" Text="Designed by: " />
-                        <Span Style="{StaticResource LabelBold}" FontSize="12" Text="Marias ♥ " />
-                        <Span Style="{StaticResource ColorTextNormal}" FontSize="10" Text=" (2023)" />
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-
+            <StackLayout 
+                Grid.Row="2"
+                Grid.RowSpan="1"
+                VerticalOptions="EndAndExpand"
+                Padding="20">
+                <HorizontalStackLayout>
+                <Label
+                FontSize="15"
+                Style="{StaticResource LabelBold}"
+                Text="Ver " />
+                <Button 
+                    x:Name="BtnTermos"
+                    Style="{StaticResource ButtonTerms}"
+                    Clicked="BtnTermos_Clicked"
+                    Text="Termos e Condições"
+                    FontSize="15"/>
+                </HorizontalStackLayout>
+                <Label
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            VerticalOptions="EndAndExpand"
+            HorizontalTextAlignment="Center"
+            Padding="20">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Style="{StaticResource ColorTextNormal}" FontSize="10" Text="Designed by: " />
+                                <Span Style="{StaticResource LabelBold}" FontSize="12" Text="Marias ♥ " />
+                                <Span Style="{StaticResource ColorTextNormal}" FontSize="10" Text=" (2023)" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
         </Grid>
-    </StackLayout>
+
+    </ContentPage.Content>
 </ContentPage>

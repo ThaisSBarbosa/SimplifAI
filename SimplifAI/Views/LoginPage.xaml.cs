@@ -12,8 +12,12 @@ namespace SimplifAI.Views
             // this.BindingContext = new LoginViewModel();
         }
 
-        private void BTN_SignIn_Clicked(object sender, EventArgs e)
+        private async void BTN_SignIn_Clicked(object sender, EventArgs e)
         {
+
+            TxtUserPass.Unfocus();
+            TxtUserName.Unfocus();
+            await Navigation.PushModalAsync(new LoadingPage());
             try
             {
                 if (string.IsNullOrEmpty(TxtUserName.Text) || string.IsNullOrEmpty(TxtUserPass.Text))
@@ -21,14 +25,25 @@ namespace SimplifAI.Views
                 if (!ChBxCheckTerms.IsChecked)
                     throw new Exception("Aceite os termos de uso!");
 
-                MySqlService.Insere(TxtUserName.Text, TxtUserPass.Text);
-                DisplayAlert("Atenção", "Cadastro realizado", "OK");
-                Navigation.PushAsync(new Views.UserPage());
+                var erro = MySqlService.Insere(TxtUserName.Text, TxtUserPass.Text);
+                if (erro != -1)
+                {
+                    await Navigation.PopModalAsync();
+                    await DisplayAlert("Atenção", "Cadastro realizado", "OK");
+
+                    await Shell.Current.GoToAsync("//UserPage");
+                }
+                else
+                {
+                    await Navigation.PopModalAsync();
+                    await DisplayAlert("Atenção", "Ocorreu um erro!", "OK");
+                }
             }
             catch (Exception ex)
             {
-                DisplayAlert("Atenção", ex.Message, "OK");
+                await DisplayAlert("Atenção", ex.Message, "OK");
             }
+           // await Navigation.PopModalAsync();
         }
     }
 }

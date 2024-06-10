@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SimplifAI.Views.TermsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+    
+    
+    <ScrollView VerticalScrollBarVisibility="Always">
+
+        <VerticalStackLayout>
+            
+            <StackLayout VerticalOptions="Start">
+                <ImageButton x:Name="btnVolta" Source="back_left.png" Clicked="btnVolta_Clicked" HorizontalOptions="Start"/>
+            </StackLayout>
+
+
+            <StackLayout
+                BackgroundColor="Transparent"
+                HorizontalOptions="Fill">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Image
+                        HeightRequest="90"
+                        Source="smart_veredict.png"
+                        VerticalOptions="Center" />
+
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout>
+                
+                <Label 
+                    Text="Ao utilizar nosso aplicativo, você concorda com os seguintes termos e condições. Por favor, leia-os com atenção antes de usar o aplicativo."
+                    FontSize="22"
+                    
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+                <Label Text=" "/>
+                <!-- TERMO 1 -->
+                <Label 
+                    FontSize="Title"
+                    Style="{StaticResource LabelBold}"
+                    Text="1. Aceitação dos Termos" />
+                <Label 
+                            Text="Ao acessar ou utilizar o SimplifAI, você concorda em ficar vinculado a estes Termos e Condições de Uso. Se você não concordar com qualquer parte dos termos, não poderá acessar o aplicativo."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 2 -->
+                <Label
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="2. Funcionamento do Aplicativo" />
+                <Label 
+                            Text="O SimplifAI é uma ferramenta que visa simplificar termos jurídicos em textos mais acessíveis. O aplicativo permite aos usuários capturarem contratos ou outros documentos legais usando a câmera do celular, e em seguida, utiliza a tecnologia de Reconhecimento Óptico de Caracteres (OCR) e Processamento de Linguagem Natural (NLP) para simplificar o texto e torná-lo mais compreensível para pessoas com conhecimento limitado em termos legais."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 3 -->
+                <Label 
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="3. Limitação de Escaneamento" />
+                <Label 
+                            Text="Por questões técnicas, o SimplifAI tem um limite de escaneamento de até duas páginas por vez. Isso garante a melhor qualidade no processamento do texto e evita possíveis falhas ou erros no resultado."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 4 -->
+                <Label 
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="4. Limitações do Serviço" />
+                <Label 
+                            Text="O SimplifAI não substitui a consulta a um advogado qualificado. Os usuários devem entender que a simplificação realizada pelo aplicativo não representa a interpretação legal completa e precisa de um documento. O aplicativo é destinado apenas para fins informativos e de auxílio na compreensão de textos legais."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 5 -->
+                <Label 
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="5. Não Utilização em Processos Judiciais" />
+                <Label 
+                            Text="Os usuários reconhecem e concordam que o SimplifAI não pode ser utilizado como argumento ou evidência em processos judiciais. Não há regulamentação para o uso do aplicativo como prova legal, e não é o objetivo do aplicativo servir como tal. Os usuários devem buscar aconselhamento jurídico adequado para questões legais."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 6 -->
+                <Label
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="6. Responsabilidade" />
+                <Label 
+                            Text="O SimplifAI não se responsabiliza pelo conteúdo dos textos simplificados gerados pelo aplicativo. Os usuários compreendem que o processo de simplificação é realizado por meio de inteligência artificial, e que pode haver imprecisões ou omissões nos textos simplificados."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 7 -->
+                <Label
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="7. Alterações nos Termos e Condições" />
+                <Label 
+                            Text="Reservamo-nos o direito de modificar estes Termos e Condições a qualquer momento, sem aviso prévio. Recomendamos que os usuários revisem periodicamente estes termos para estar ciente de quaisquer alterações. O uso continuado do aplicativo após a publicação de alterações constitui aceitação dessas alterações."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <!-- TERMO 8 -->
+                <Label 
+                            FontSize="Title"
+                            Style="{StaticResource LabelBold}"
+                            Text="8. Contato" />
+                <Label 
+                            Text="Se você tiver alguma dúvida ou preocupação sobre estes Termos e Condições, entre em contato conosco ."
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+
+                <HorizontalStackLayout HorizontalOptions="Center" >
+                    <Label 
+ Text=" ♥ "
+ FontSize="10"
+ Style="{StaticResource LabelBold}"
+ HorizontalOptions="FillAndExpand"
+ VerticalOptions="StartAndExpand" />
+                <Label 
+                            Text="Obrigado por usar nosso aplicativo!"
+                            FontSize="18"
+                            Style="{StaticResource LabelBold}"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                <Label 
+                 Text=" ♥ "
+                 FontSize="10"
+                 Style="{StaticResource LabelBold}"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="StartAndExpand" />
+                </HorizontalStackLayout>
+            </StackLayout>
+
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

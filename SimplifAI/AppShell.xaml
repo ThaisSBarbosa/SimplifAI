@@ -29,23 +29,24 @@
 
     <TabBar>
         <ShellContent
+            Title="Usuário"
+            ContentTemplate="{DataTemplate local:UserPage}"
+            Icon="usuario.png" 
+            Route="UserPage" />
+        <ShellContent
             Title="Ler"
             ContentTemplate="{DataTemplate local:ScanPage}"
             Icon="scan.png"
             Route="ScanPage" />
         <ShellContent
-            Title="Usuário"
-            ContentTemplate="{DataTemplate local:UserPage}"
-            Icon="usuario.png" />
-        <ShellContent
             Title="Sobre"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Icon="icon_about.png"
             Route="AboutPage" />
-       <ShellContent 
+       <!--<ShellContent 
             Title="Teste"
             ContentTemplate="{DataTemplate local:StartPage}" 
-            Route="StartPage" />
+            Route="StartPage" /> -->
     </TabBar>
 
     <!--<ShellContent

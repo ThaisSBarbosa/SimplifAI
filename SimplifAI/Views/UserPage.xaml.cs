@@ -15,8 +15,9 @@ namespace SimplifAI.Views
             //    "jurídico para alguém que não possui familiaridade com o meio: " + testeOCR);
         }
 
-        private void BtnEntrar_Clicked(object sender, EventArgs e)
+        private async void BtnEntrar_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushModalAsync(new LoadingPage());
             try
             {
                 if(string.IsNullOrEmpty(TxtUserName.Text) || string.IsNullOrEmpty(TxtSenha.Text))
@@ -26,18 +27,20 @@ namespace SimplifAI.Views
 
                 if (!usuarioValido)
                     throw new Exception("Usuário ou senha inválidos!");
-
-                Navigation.PushAsync(new Views.ScanPage());
+                await Navigation.PopModalAsync();
+                await DisplayAlert("Login", "Usuário logado com sucesso!", "OK");
+                await Shell.Current.GoToAsync("//ScanPage");
             }
             catch (Exception ex)
             {
-                DisplayAlert("Atenção", ex.Message, "OK");
+                await Navigation.PopModalAsync();
+                await DisplayAlert("Atenção", ex.Message, "OK");
             }
         }
 
-        private void BTN_PrimeiroAcesso_Clicked(object sender, EventArgs e)
+        private async void BTN_PrimeiroAcesso_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Views.LoginPage());
+            await Navigation.PushAsync(new Views.LoginPage());
         }
     }
 }

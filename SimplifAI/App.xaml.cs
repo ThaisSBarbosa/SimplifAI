@@ -8,8 +8,8 @@ namespace SimplifAI
         {
             InitializeComponent();
 
-             MainPage = new AppShell();
-           // MainPage = new StartPage();
+             //MainPage = new AppShell();
+           MainPage = new StartPage();
         }
     }
 }

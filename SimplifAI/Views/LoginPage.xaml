@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:SimplifAI.ViewModels"
+    HideSoftInputOnTapped="True"
     Title="{Binding Title}">
 
     <ContentPage.BindingContext>
@@ -48,8 +49,7 @@
                 x:Name="TxtUserName"
                 HorizontalOptions="FillAndExpand"
                 Keyboard="Text"
-                Placeholder="Digite um nome de usuário"
-                Text="Fulano" />
+                Placeholder="Digite um nome de usuário"/>
         </StackLayout>
         <!--<StackLayout
             Orientation="Horizontal"
@@ -157,7 +157,24 @@
                 </StackLayout>
         
                 <BoxView HeightRequest="10" Color="{StaticResource BgTela}"/>
-                <Button x:Name="BTN_SignIn" Text="Cadastrar" Clicked="BTN_SignIn_Clicked" VerticalOptions="EndAndExpand"/>
+                <StackLayout 
+    Grid.Row="2"
+    Grid.RowSpan="1"
+    VerticalOptions="EndAndExpand"
+    Padding="20">
+                    <Border Style="{StaticResource BorderShadow}" VerticalOptions="EndAndExpand" >
+                        <Border.Shadow>
+                            <Shadow Offset="10,10" Radius="20" Opacity="0.4" />
+                        </Border.Shadow>
+                        <Button
+        x:Name="BTN_SignIn"
+        Clicked="BTN_SignIn_Clicked"
+        HeightRequest="50"
+        Text="Cadastrar" 
+                            VerticalOptions="EndAndExpand"/>
+                    </Border>
+                </StackLayout>
+
 
             </VerticalStackLayout>
         

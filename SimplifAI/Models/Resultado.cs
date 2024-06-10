@@ -42,5 +42,15 @@ namespace SimplifAI.Models
             }
             return _instancia;
         }
+        public static void LimpaDados()
+        {
+            _instancia.TextoOriginal = String.Empty;
+            _instancia.TextoProcessado = String.Empty;
+            _instancia.TextoSimplificado = String.Empty;
+            _instancia.MetricaGeral = 0.0;
+            _instancia.MetricaTextoOriginal = 0.0;
+            _instancia.MetricaTextoSimplificado = 0.0;
+        }
+
     }
 }

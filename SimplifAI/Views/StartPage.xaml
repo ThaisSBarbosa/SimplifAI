@@ -6,15 +6,19 @@
     xmlns:vm="clr-namespace:SimplifAI.ViewModels"
     Title="{Binding Title}"
     xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui">
-
+    
+    <ContentPage.BindingContext>
+        <vm:StartViewModel x:Name="StartViewModel" />
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
+        
         <ResourceDictionary>
             <DataTemplate x:Key="GifTemplate">
                 <StackLayout>
                     <ff:CachedImage 
                     Source="{Binding}"
-                    Aspect="AspectFill"
-                    VerticalOptions="FillAndExpand"
+                    Aspect="AspectFit"
+                      HeightRequest="680"
                     HorizontalOptions="FillAndExpand"
                     LoadingPriority="High"/>
 
@@ -23,10 +27,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto,Auto,Auto,*" >
+    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto,50,20,Auto" >
         <CarouselView x:Name="carousel"
                       ItemTemplate="{StaticResource GifTemplate}"
-                      VerticalOptions="FillAndExpand"
+                      VerticalOptions="Start"
                       HorizontalOptions="FillAndExpand"
                       PositionChanged="OnCarouselViewPositionChanged"
                       Loop="False"
@@ -41,26 +45,32 @@
                 IndicatorSize="10" 
                 HorizontalOptions="Center"
                 VerticalOptions="End"
-                Margin="0,0,0,0"
-                Grid.Row="4"/>
-        <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="0,0,0,00" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                Margin="0,10,0,0"
+                Grid.Row="2"/>
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Padding="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center" Spacing="0">
             <CheckBox 
                  x:Name="AceiteTermos" 
                  IsChecked="{Binding Aceitou}" 
                  IsVisible="False"
-               Color="{StaticResource Main}"/>
+                    Color="{StaticResource Main}"
+                />
             <Label 
                    x:Name="LblAceiteTermos"
                    Style="{StaticResource LabelBold}"
                    LineBreakMode="WordWrap"
                    IsVisible="False"
-                   Text="Concordo com os Termos e Condições" FontSize="20"/>
-  
+                   Text="Aceito " />
+            <Button 
+                x:Name="BtnTermos"
+                Style="{StaticResource ButtonTerms}"
+                Clicked="BtnTermos_Clicked"
+                Text="Termos e Condições"
+                IsVisible="False"/>
         </StackLayout>
         <Border 
             Style="{StaticResource BorderShadow}" 
             VerticalOptions="EndAndExpand" 
-            Padding="20"
+            Padding="30"
             Grid.Row="3">
             <Border.Shadow>
                 <Shadow Offset="10,10" Radius="20" Opacity="0.4" />
@@ -69,7 +79,7 @@
     x:Name="LoginButton"
     Clicked="OnLoginButtonClicked"
     HeightRequest="50"
-                IsEnabled="False"
+                IsEnabled="{Binding Aceitou, Mode=OneWay}"
     Text="Entrar" />
         </Border>
     </Grid>

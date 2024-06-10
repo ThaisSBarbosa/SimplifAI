@@ -4,12 +4,17 @@ namespace SimplifAI.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        public double ScrollViewRowHeight { get; set; }
+
         public AboutViewModel()
         {
             Title = "Sobre nós";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+
+
+            var screenHeight = Microsoft.Maui.Devices.DeviceDisplay.MainDisplayInfo.Height;
+            ScrollViewRowHeight = screenHeight - 200;
         }
 
-        public ICommand OpenWebCommand { get; }
+
     }
 }
