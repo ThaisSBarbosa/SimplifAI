@@ -58,6 +58,9 @@ namespace SimplifAI.Views
 
         private void LeDocumento()
         {
+            //_resultado.TextoOriginal = @"Na esfera jurídica, a arrematação é o ato pelo qual um bem é adjudicado a um terceiro mediante leilão judicial, em decorrência de uma execução fiscal. Ao arrazoar sobre o processo, o advogado utiliza sua argumentação para defender os interesses do cliente perante o juízo. Posteriormente, o advogado pode ajuizar uma ação com vistas a salvaguardar os direitos do cliente, seguindo os trâmites processuais cabíveis conforme o ordenamento jurídico vigente.";
+
+            //return;
             try
             {
                 foreach (var arquivo in _scanViewModel.ListaAquivos)
@@ -75,11 +78,7 @@ namespace SimplifAI.Views
 
         private async Task SimplifAI()
         {
-            //_resultado.TextoOriginal = "\r\nNa esfera jurídica, a arrematação é o ato pelo qual um bem é adjudicado a um terceiro " +
-            //    "mediante leilão judicial, em decorrência de uma execução fiscal. Ao arrazoar sobre o processo, o advogado " +
-            //    "utiliza sua argumentação para defender os interesses do cliente perante o juízo. Posteriormente, o advogado " +
-            //    "pode ajuizar uma ação com vistas a salvaguardar os direitos do cliente, seguindo os trâmites processuais cabíveis " +
-            //    "conforme o ordenamento jurídico vigente.";
+            
 
             try
             {
